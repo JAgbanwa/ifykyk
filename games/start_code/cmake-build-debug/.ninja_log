@@ -1,0 +1,6 @@
+# ninja log v6
+2	713	1735501279016183688	CMakeFiles/project.dir/Game.cpp.o	ec27df5ad83f22f7
+1	718	1735501279015494517	CMakeFiles/project.dir/main.cpp.o	c231b42696ec7f59
+2	719	1735501279016678816	CMakeFiles/project.dir/Entity.cpp.o	65d692baaa4b3c37
+2	725	1735501279016532857	CMakeFiles/project.dir/Room.cpp.o	81f2586702e81c87
+6	656	1735502907229364523	CMakeFiles/project.dir/main.cpp.o	c231b42696ec7f59
