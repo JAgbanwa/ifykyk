@@ -27,7 +27,7 @@ The error you saw (`ring_nf made no progress`, reported at 104:102 in the online
 I replaced it with a version-robust proof that establishes the plain polynomial identity
 `36·n³ − 19 = (36·A³ − 19) + (n − A)·(36·(n² + n·A + A²))` (which `ring` always proves, since it is a genuine identity), rewrites with it, and then closes the goal with `dvd_add` together with `M ∣ n − A` (from `n ≡ A [ZMOD M]`).
 The file builds cleanly with no `sorry`. Changes are committed and pushed.
-# Summary of changes for run e09e3e1a-44fd-48f4-bac1-0b8ead00a2a5
+
 Formalized the paper "Large Modular Congruences for which x ∣ 36n³ − 19" (a CRT / cube-root construction) in Lean 4 / Mathlib. All results live in `RequestProject/Main.lean` in namespace `LargeCongruences`, and the project builds cleanly with no `sorry` and only permitted axioms.
 What was proved:
 - **Lemma 1 (cube bijection).** `cube_bijective`: for a prime `p ≡ 2 (mod 3)`, `t ↦ t³` is a bijection of `ZMod p`; and `exists_cube_root`: every element has a cube root.
