@@ -20,6 +20,12 @@ The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAg
 
 We proceed to choose one of the congruences, preferably the 'largest' .i.e. the 40-digit long congruences of $n,x$ for which $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. Thus, $n = 7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860$ and $x = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496$
 
+We went on to further pose this question to ChatGPT 5.5 Pro (Extended):
+
+```
+In light of these results as far as the large congruences go, which such congruences (n = a_1(modp_1) and x = a_2(modp_2)) would allow that for $y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$, $n,x,y$ are all integer? 
+```
+
 ****************************************************
 
 Fixed the `ring_nf` error.
