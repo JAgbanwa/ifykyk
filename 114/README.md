@@ -6,5 +6,5 @@ To ensure that integer solutions are yielded for this problem,
 
 $y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$.
 
-An important criterion in the above equation yielding integer solutions (and thus solving the sums of three cubes problem by extension) is this fraction $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ being an integer itself. It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
+An important criterion in the above equation yielding integer solutions (and thus solving the sums of three cubes problem by extension) is this fraction $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
 we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ with one of these two scenarios playing out: 
