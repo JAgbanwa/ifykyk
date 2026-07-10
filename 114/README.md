@@ -16,4 +16,4 @@ I then posed this question to Anthropic's Claude Sonnet (Medium):
 ```
 Can you search for the largest modular congruences you can find where for n = a_1(modp_1) and x = a_2(modp_2), a_1, a_2, p_1 ,p_2 could be as large as 30 digits to 40 digits long for all I care for which (36n^3 - 19)/x is integer? 
 ```
-The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/large_congruences.pdf)) and as .tex ([\[3\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/LargeCongruences.tex))
+The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/large_congruences.pdf)) and as .tex ([\[3\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/LargeCongruences.tex)).
