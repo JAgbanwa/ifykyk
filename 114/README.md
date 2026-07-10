@@ -1,6 +1,6 @@
 From this preprint [\[1\]](https://figshare.com/articles/preprint/Closed_form_formulas_on_the_sums_of_three_cubes_for_k_114_192_/30509981?file=61812286), 
 
-$\Biggl( -x + \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( 2 \cdot x + 6n \Biggl)^{3} = 114.$ 
+$\Biggl( -x + \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( 2x + 6n \Biggl)^{3} = 114.$ 
 
 To ensure that integer solutions are yielded for this problem, 
 
