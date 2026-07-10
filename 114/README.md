@@ -20,6 +20,10 @@ The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAg
 
 We proceed to choose one of the congruences, preferably the 'largest' .i.e. the 40-digit long congruences of $n,x$ for which $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. Thus, $n = 7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860$ and $x = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496$. 
 
+The earlier equation can be reframed now as:
+
+$y^2 = (6n + 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496)^2 + \frac{36n^3 - 19}{2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496}$
+
 ****************************************************
 
 Fixed the `ring_nf` error.
