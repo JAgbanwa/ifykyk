@@ -10,3 +10,9 @@ An important criterion in the above equation yielding integer solutions (and thu
 we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ with one of these two scenarios playing out: 
 
 *When $n = p_1 k_1 + a_1$ and $x = p_2 k_2 + a_2$ , $k_1, k_2$ could be integers for which $y$ is an integer **or** $k_1, k_2$ could be non-integers for which $y$ is an integer (in which case $k_1 | p_1$ and $k_2 | p_2$).
+
+I then posed this question to Anthropic's Claude Sonnet (Medium):
+
+```
+Can you search for the largest modular congruences you can find where for n = a_1(modp_1) and x = a_2(modp_2), a_1, a_2, p_1 ,p_2 could be as large as 30 digits to 40 digits long for all I care for which (36n^3 - 19)/x is integer? 
+```
