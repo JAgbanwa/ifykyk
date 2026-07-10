@@ -9,4 +9,4 @@ $y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$.
 An important criterion in the above equation yielding integer solutions (and thus solving the sums of three cubes problem by extension) is this fraction $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
 we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ with one of these two scenarios playing out: 
 
-*When $n = p_1 k_1 + a_1$ and $x = p_2 k_2 + a_2$, $k_1, k_2$ could be integers for which $y$ is an integer **or** $k_1, k_2$ could be non-integers for which $y$ is an integer (in which case $k_1 | p_1$ and $k_2 | p_2$.
+*When $n = p_1 k_1 + a_1$ and $x = p_2 k_2 + a_2$ , $k_1, k_2$ could be integers for which $y$ is an integer **or** $k_1, k_2$ could be non-integers for which $y$ is an integer (in which case $k_1 | p_1$ and $k_2 | p_2$).
