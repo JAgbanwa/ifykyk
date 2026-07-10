@@ -2,7 +2,7 @@ From this preprint [\[1\]](https://figshare.com/articles/preprint/Closed_form_fo
 
 $\Biggl( -x + \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( 2x + 6n \Biggl)^{3} = 114.$ 
 
-To ensure that integer solutions are yielded for this problem, 
+To ensure that integer solutions are yielded for this problem,  
 
 $y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$.
 
