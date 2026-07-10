@@ -25,7 +25,7 @@ We went on to further pose this question to ChatGPT 5.5 Pro (Extended):
 ```
 In light of these results as far as the large congruences go, which such congruences (n = a_1(modp_1) and x = a_2(modp_2)) would allow that for $y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$, $n,x,y$ are all integer? 
 ```
-The resulting results can be found here; as .pdf ([\[5\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/congruence_square_condition_114/congruence_square_condition_114.pdf)) and as .tex ([\[6\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/congruence_square_condition_114/congruence_square_condition_114.tex)).
+The resulting results can be found here; as .pdf ([\[5\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/congruence_square_condition_114/congruence_square_condition_114.pdf)) and as .tex ([\[6\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/congruence_square_condition_114/congruence_square_condition_114.tex)). Find the Lean file here: ([\[7\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/congruence_square_condition_114/Main.lean)
 
 ****************************************************
 
