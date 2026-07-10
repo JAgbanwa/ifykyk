@@ -19,3 +19,21 @@ Can you search for the largest modular congruences you can find where for n = a_
 The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/large_congruences.pdf)) and as .tex ([\[3\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/LargeCongruences.tex)).
 
 We proceed to choose one of the congruences, preferably the 'largest' .i.e. the 40-digit long congruences of $n,x$ for which $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. Thus, $n = 7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860$ and $x = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496$
+
+****************************************************
+
+Fixed the `ring_nf` error.
+The error you saw (`ring_nf made no progress`, reported at 104:102 in the online editor) came from the `class_dvd` lemma in `RequestProject/Main.lean`. When the file is pasted into the online editor without its header, that lemma's line lines up with the reported position, and its `ring` tactic is what invokes `ring_nf`. The original proof `convert dvd_add h (...) using 1 ; ring` was fragile: on a different Mathlib version, `convert ... using 1` leaves a goal shape that `ring`/`ring_nf` cannot make progress on.
+I replaced it with a version-robust proof that establishes the plain polynomial identity
+`36·n³ − 19 = (36·A³ − 19) + (n − A)·(36·(n² + n·A + A²))` (which `ring` always proves, since it is a genuine identity), rewrites with it, and then closes the goal with `dvd_add` together with `M ∣ n − A` (from `n ≡ A [ZMOD M]`).
+The file builds cleanly with no `sorry`. Changes are committed and pushed.
+# Summary of changes for run e09e3e1a-44fd-48f4-bac1-0b8ead00a2a5
+Formalized the paper "Large Modular Congruences for which x ∣ 36n³ − 19" (a CRT / cube-root construction) in Lean 4 / Mathlib. All results live in `RequestProject/Main.lean` in namespace `LargeCongruences`, and the project builds cleanly with no `sorry` and only permitted axioms.
+What was proved:
+- **Lemma 1 (cube bijection).** `cube_bijective`: for a prime `p ≡ 2 (mod 3)`, `t ↦ t³` is a bijection of `ZMod p`; and `exists_cube_root`: every element has a cube root.
+- **Construction 1.** `isUnit_thirtysix` (36 is a unit mod such `p ≠ 2`), `exists_root_zmod` (there is a residue `a` with `36a³ = 19` in `ZMod p`), and `key_single` (its integer/congruence-class form: there is `a` with `p ∣ 36n³ − 19` for all `n ≡ a (mod p)`).
+- **Theorem 1 (multi-prime CRT combination).** `multiprime`: for any finite set of distinct primes each `≡ 2 (mod 3)` and `≠ 2`, with product `M`, there is a residue `A` such that `M ∣ 36n³ − 19` for every `n ≡ A (mod M)`. Proved by induction over the finite set using an explicit Bézout/CRT combination and coprimality of distinct primes (`coprime_prime_prod`).
+- A generic class lemma `class_dvd` upgrading a single verified representative to an entire residue class.
+- **Numerical instances (§4–§7).** All four explicit instances (two/three primes at 30 and 40 digits) are verified by exact integer arithmetic (`native_decide`): the root identities `36aᵢ³ ≡ 19 (mod pᵢ)`, the product `M = ∏ pᵢ`, the exact division `36A³ − 19 = M·Q`, and the resulting infinite family `M ∣ 36n³ − 19` for `n ≡ A (mod M)` (theorems `instance_k2_30digit`, `instance_k3_30digit`, `instance_k2_40digit`, `instance_k3_40digit`).
+Note recorded in the file's docstring: primality of the 30-/40-digit `pᵢ` (checked externally in the paper) is not re-certified inside Lean, as it is computationally expensive and not needed — the family statements follow purely from the exact divisibility `M ∣ 36A³ − 19`.
+Axiom check: the general theorems depend only on `propext`, `Classical.choice`, `Quot.sound`; the numerical instances additionally use `Lean.ofReduceBool`/`Lean.trustCompiler` from `native_decide`.
