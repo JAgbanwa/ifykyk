@@ -1,0 +1,346 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{hyperref}
+\usepackage{seqsplit}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\bigint}[1]{\texttt{\seqsplit{#1}}}
+\newcommand{\numblock}[2]{\par\noindent\( #1 \)\;\begin{minipage}[t]{0.82\linewidth}{\ttfamily\scriptsize\raggedright\seqsplit{#2}\par}\end{minipage}\par}
+\newcommand{\modulo}[1]{\; (\mathrm{mod}\; #1)}
+\setlist[itemize]{topsep=2pt,itemsep=2pt,parsep=0pt}
+\setlist[enumerate]{topsep=2pt,itemsep=2pt,parsep=0pt}
+
+\title{Congruence Conditions for the Square Constraint in\\
+\texorpdfstring{$\displaystyle y^2=(6n+x)^2+\frac{36n^3-19}{x}$}{y2=(6n+x)2+(36n3-19)/x}}
+\author{Prepared for Jamal Agbanwa}
+\date{July 10, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Starting from the large CRT/cube-root congruences that force
+\(x\mid 36n^3-19\), we analyze the extra condition that
+\[
+        y^2=(6n+x)^2+\frac{36n^3-19}{x}
+\]
+be an integer square.  The main conclusion is sharp but restrictive: the
+large congruence construction must at least be refined to
+\[
+        n\equiv 0 \pmod 3,\qquad x\equiv 7 \pmod {12}.
+\]
+For the prime-product CRT construction with \(x=M=\prod_i p_i\), where every
+\(p_i\equiv 2\pmod 3\), this means \(M\equiv 7\pmod {12}\); equivalently, the
+number of prime factors \(p_i\equiv 5\pmod {12}\) and the number of prime
+factors \(p_i\equiv 11\pmod {12}\) must both be odd.  The remaining square
+condition is not a cosmetic congruence issue: it is exactly equivalent to a
+representation of \(114\) as a sum of three integer cubes.  Thus the CRT
+classes below are admissible search classes, not certificates of an integer
+\(y\).
+\end{abstract}
+
+\section{Starting point: the divisibility congruence}
+The uploaded note constructs large congruence classes by the following method.
+For a prime \(p\equiv 2\pmod 3\), cubing is a bijection modulo \(p\). Hence
+there is a unique residue \(a\pmod p\) satisfying
+\[
+        36a^3\equiv 19\pmod p.
+\]
+If \(p_1,\dots,p_k\) are distinct primes congruent to \(2\pmod 3\), and
+\(a_i\) is the corresponding residue modulo \(p_i\), then the CRT gives a
+unique residue \(A\pmod M\), with \(M=p_1\cdots p_k\), such that
+\[
+        n\equiv A\pmod M
+        \quad\Longrightarrow\quad
+        M\mid 36n^3-19.
+\]
+This document asks what must be added so that
+\[
+        (6n+M)^2+\frac{36n^3-19}{M}
+\]
+is also a square.
+
+\section{Forced congruences from the square condition}
+Let
+\[
+        q=\frac{36n^3-19}{x},\qquad z=6n+x.
+\]
+Then the equation is \(y^2=z^2+q\), and \(xq=36n^3-19\).
+
+\begin{lemma}[Basic local restrictions]\label{lem:basic}
+Suppose \(n,x,y\in\Z\), \(x\ne 0\), \(x\mid 36n^3-19\), and
+\[
+        y^2=(6n+x)^2+\frac{36n^3-19}{x}.
+\]
+Then
+\[
+        n\equiv 0\pmod 3,
+        \qquad x\equiv 7\pmod {12},
+        \qquad y\equiv 0\pmod 6.
+\]
+\end{lemma}
+
+\begin{proof}
+Since \(36n^3-19\) is odd and is congruent to \(-1\pmod 3\), every divisor
+\(x\) is odd and prime to \(3\).  Thus \(q=(36n^3-19)/x\) is also odd and
+prime to \(3\).
+
+Modulo \(3\), we have \(6n+x\equiv x\) and \(36n^3-19\equiv -1\equiv 2\).
+Therefore
+\[
+        y^2\equiv x^2+2x^{-1}\pmod 3.
+\]
+If \(x\equiv 2\pmod 3\), then \(x^2+2x^{-1}\equiv 1+2\cdot 2\equiv 2\pmod 3\),
+which is not a square modulo \(3\). Hence \(x\equiv 1\pmod 3\), and then
+\(y^2\equiv 0\pmod 3\), so \(3\mid y\).
+
+Because \(3\mid y\), we have \(y^2\equiv 0\pmod 9\).  Also
+\(36n^3-19\equiv -1\pmod 9\).  Reducing the equation modulo \(9\) and
+multiplying by \(x\), we get
+\[
+        x(6n+x)^2\equiv 1\pmod 9.
+\]
+Since \(x\equiv 1\pmod 3\), the possible residues of \(x\pmod 9\) are
+\(1,4,7\).  If \(n\equiv 0\pmod 3\), then \(6n\equiv 0\pmod 9\), and indeed
+\(x(6n+x)^2\equiv x^3\equiv 1\pmod 9\). If \(n\equiv 1\pmod 3\), then
+\(6n\equiv 6\pmod 9\), and for \(x=1,4,7\pmod 9\) one gets
+\(x(x+6)^2\equiv 4\pmod 9\). If \(n\equiv 2\pmod 3\), then \(6n\equiv 3\pmod 9\),
+and one gets \(x(x+3)^2\equiv 7\pmod 9\).  Therefore \(n\equiv 0\pmod 3\).
+
+Modulo \(4\), since \(36n^3-19\equiv 1\pmod 4\) and \(x\) is odd, we have
+\(q\equiv x^{-1}\equiv x\pmod 4\).  Also \(6n+x\) is odd, so
+\((6n+x)^2\equiv 1\pmod 4\).  Thus
+\[
+        y^2\equiv 1+x\pmod 4.
+\]
+If \(x\equiv 1\pmod 4\), the right side is \(2\pmod 4\), impossible for a
+square.  Hence \(x\equiv 3\pmod 4\), and then \(y^2\equiv 0\pmod 4\), so
+\(2\mid y\).  Combining \(x\equiv 1\pmod 3\) and \(x\equiv 3\pmod 4\) gives
+\(x\equiv 7\pmod {12}\), while \(3\mid y\) and \(2\mid y\) give \(6\mid y\).
+\end{proof}
+
+\section{Exact link with the sum of three cubes problem for 114}
+The previous lemma gives unavoidable congruence filters.  The next theorem
+explains why these filters do not finish the problem.
+
+\begin{theorem}[Equivalence with three cubes]\label{thm:equiv}
+There exist integers \(n,x,y\), with \(x\ne 0\), satisfying
+\[
+        y^2=(6n+x)^2+\frac{36n^3-19}{x}
+        \quad\text{and}\quad x\mid 36n^3-19
+\]
+if and only if there exist integers \(U,V,W\) such that
+\[
+        U^3+V^3+W^3=114.
+\]
+More precisely, every solution \((n,x,y)\) gives a three-cube representation by
+\[
+        U=6n+2x,
+        \qquad V=y-x,
+        \qquad W=-y-x.
+\]
+Conversely, any representation \(U^3+V^3+W^3=114\) can be ordered so that the
+even term is \(U\); then
+\[
+        n=\frac{U+V+W}{6},
+        \qquad x=-\frac{V+W}{2},
+        \qquad y=\frac{V-W}{2}
+\]
+gives an integer solution of the displayed equation.
+\end{theorem}
+
+\begin{proof}
+Assume first that \((n,x,y)\) is a solution.  Put
+\[
+        U=6n+2x,
+        \quad V=y-x,
+        \quad W=-y-x.
+\]
+Then
+\[
+\begin{aligned}
+U^3+V^3+W^3
+&=(6n+2x)^3+(y-x)^3+(-y-x)^3\\
+&=(6n+2x)^3-6xy^2-2x^3\\
+&=6\bigl(36n^3+36n^2x+12nx^2+x^3-xy^2\bigr).
+\end{aligned}
+\]
+The original equation is equivalent, after multiplying by \(x\), to
+\[
+        xy^2=36n^3+36n^2x+12nx^2+x^3-19.
+\]
+Substitution into the previous line gives
+\[
+        U^3+V^3+W^3=6\cdot 19=114.
+\]
+
+Conversely, suppose \(U^3+V^3+W^3=114\).  Since cubes modulo \(9\) are
+\(0,\pm 1\), and \(114\equiv -3\pmod 9\), each of \(U,V,W\) must have cube
+\(-1\pmod 9\), so each is congruent to \(2\pmod 3\).  Also, since \(114\) is
+even but not divisible by \(8\), exactly one of \(U,V,W\) is even.  Reorder the
+three variables so that \(U\) is the even one.  Then
+\[
+        U\equiv 2\pmod 6,
+        \qquad V\equiv W\equiv 5\pmod 6,
+\]
+so \(U+V+W\equiv 0\pmod 6\), and \(V+W\), \(V-W\) are even.  Therefore
+\[
+        n=\frac{U+V+W}{6},\quad
+        x=-\frac{V+W}{2},\quad
+        y=\frac{V-W}{2}
+\]
+are integers.  The identity computed above reverses to give
+\[
+        xy^2=36n^3+36n^2x+12nx^2+x^3-19
+              =x(6n+x)^2+36n^3-19.
+\]
+Thus
+\[
+        x\bigl(y^2-(6n+x)^2\bigr)=36n^3-19.
+\]
+The case \(x=0\) would force \(V=-W\) and hence \(U^3=114\), impossible in
+integers.  Thus \(x\ne 0\), and the last identity gives both divisibility by
+\(x\) and the required equation.
+\end{proof}
+
+\begin{corollary}\label{cor:notcongruenceonly}
+No finite congruence refinement of the CRT divisibility construction should be
+treated as a certificate that \(y\) is integral.  A successful instance is
+equivalent to finding an integer representation of \(114\) as a sum of three
+cubes.
+\end{corollary}
+
+\section{How to refine the large CRT construction}
+The uploaded CRT construction already gives divisibility.  Lemma~\ref{lem:basic}
+shows that any candidate class must also satisfy
+\[
+        n\equiv 0\pmod 3,
+        \qquad x\equiv 7\pmod {12}.
+\]
+For the prime-product construction, take
+\[
+        M=\prod_{i=1}^k p_i,
+        \qquad p_i\equiv 2\pmod 3,
+\]
+and use \(x=M\).  Since each odd prime \(p_i\equiv 2\pmod 3\) is congruent to
+\(5\) or \(11\pmod {12}\), the condition \(M\equiv 7\pmod {12}\) is equivalent
+to
+\[
+        \#\{i:p_i\equiv 5\pmod {12}\}\equiv 1\pmod 2,
+        \qquad
+        \#\{i:p_i\equiv 11\pmod {12}\}\equiv 1\pmod 2.
+\]
+The smallest such choice is one prime of each type.
+
+Thus an admissible search class has the form
+\[
+\boxed{
+\begin{aligned}
+        n&\equiv A \pmod {3M},\\
+        x&=M,\qquad M\equiv 7\pmod {12},
+\end{aligned}}
+\]
+where \(A\) is the CRT solution of
+\[
+        A\equiv 0\pmod 3,
+        \qquad A\equiv a_i\pmod {p_i}\quad(1\le i\le k),
+\]
+and each \(a_i\) satisfies \(36a_i^3\equiv 19\pmod {p_i}\).
+For every \(n\equiv A\pmod {3M}\), one has \(M\mid 36n^3-19\), and the forced
+modulo \(3,4,9,12\) obstructions to \(y\) being an integer square are removed.
+The remaining condition is the genuine three-cubes condition from
+Theorem~\ref{thm:equiv}.
+
+
+\section{Explicit admissible large congruence skeletons}
+The following examples use prime/root data from the uploaded large-congruence
+computations, but select products \(M\equiv 7\pmod {12}\) and add the necessary
+condition \(n\equiv 0\pmod 3\).
+
+\subsection*{A 60-digit admissible divisor}
+Use the following two prime/root pairs:
+\numblock{p_1=}{779282871203804318581334453057}
+\numblock{a_1=}{540863547358444129637446662643}
+\numblock{p_2=}{422843868764454355911216773723}
+\numblock{a_2=}{173885648024960625137792429386}
+Here \(p_1\equiv 5\pmod {12}\), \(p_2\equiv 11\pmod {12}\), and both are
+\(2\pmod 3\).  The product is \(M_{60}=p_1p_2\), where
+\numblock{M_{60}=}{329514984121688619762783660355521561208464753917624334621211}
+so \(M_{60}\equiv 7\pmod {12}\).  The refined CRT class is
+\[
+        n\equiv A_{60}\pmod {N_{60}},
+        \qquad N_{60}=3M_{60},
+\]
+where
+\numblock{A_{60}=}{6123585947301432250420495038918585980078995990135335295170}
+\numblock{N_{60}=}{988544952365065859288350981066564683625394261752873003863633}
+For every \(n\) in this class and \(x=M_{60}\), one has \(x\mid 36n^3-19\),
+while \(n\equiv 0\pmod 3\) and \(x\equiv 7\pmod {12}\).
+
+\subsection*{An 80-digit admissible divisor}
+Use the following two prime/root pairs:
+\numblock{p_1=}{7729484335457653901640057298531371241781}
+\numblock{a_1=}{7668575607239450973459863267707132263860}
+\numblock{p_2=}{4350736286376564530047381650448847768399}
+\numblock{a_2=}{525176878515189528938215354529508172272}
+Here \(p_1\equiv 5\pmod {12}\), \(p_2\equiv 11\pmod {12}\), and both are
+\(2\pmod 3\).  The product is \(M_{80}=p_1p_2\), where
+\numblock{M_{80}=}{33628947973254860882585081701145824718581850550296972738720431240616807320278619}
+so \(M_{80}\equiv 7\pmod {12}\).  The refined CRT class is
+\[
+        n\equiv A_{80}\pmod {N_{80}},
+        \qquad N_{80}=3M_{80},
+\]
+where
+\numblock{A_{80}=}{95585981323865432505725289557587562987151849436683367780975283125799528610477321}
+\numblock{N_{80}=}{100886843919764582647755245103437474155745551650890918216161293721850421960835857}
+For every \(n\) in this class and \(x=M_{80}\), the quotient \((36n^3-19)/x\) is
+an integer and the necessary square congruences from Lemma~\ref{lem:basic} are
+satisfied.
+
+For the least representative \(n=A_{80}\) in this 80-digit class, exact
+arithmetic gives
+\numblock{(36A_{80}^3-19)/M_{80}=}{934914356623755878709556229742361127659491904728230197026247469846131050286142001010783580690572385245334842196936454823101781996033924286298169758151340324379683}
+but
+\[
+        (6A_{80}+M_{80})^2+\frac{36A_{80}^3-19}{M_{80}}
+\]
+is not a square.  This is not a contradiction; it means only that the least
+representative of the admissible class is not a solution.
+
+\section{Interpretation}
+The answer to the congruence question is therefore:
+\[
+        \boxed{n\equiv 0\pmod 3,\\ x\equiv 7\pmod {12}}
+\]
+must be imposed on top of the large divisibility congruences.  In the CRT
+prime-product method, choose \(M\equiv 7\pmod {12}\), extend the CRT class for
+\(n\) by adding \(n\equiv 0\pmod 3\), and then search within
+\(n=A+3Mt\), \(x=M\), for a value of \(t\) making the displayed quantity a
+square.
+
+However, by Theorem~\ref{thm:equiv}, a fully successful integer triple is
+nothing less than a representation of \(114\) as a sum of three integer cubes.
+The congruences above identify admissible lanes for a search; they do not by
+themselves solve the square condition.
+
+\section*{References}
+\begin{enumerate}
+\item \emph{Large Modular Congruences for which \(x\mid 36n^3-19\): A CRT / cube-root construction with 30- and 40-digit moduli}, uploaded note, July 10, 2026.
+\item Andrew V. Sutherland, \emph{Sums of three cubes}, Waterloo slides, 2019.
+\item Public status summaries for the sums of three cubes problem list \(114\) among the remaining unsolved cases up to \(1000\) as of the sources checked on July 10, 2026.
+\end{enumerate}
+
+\end{document}
