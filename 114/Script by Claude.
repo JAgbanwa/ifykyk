@@ -1,0 +1,44 @@
+cat > search_shard.gp << 'EOF'
+N1 = 7729484335457653901640057298531371241781;
+N0 = 7668575607239450973459863267707132263860;
+D1 = 2486598372481845396683104279916570951657;
+D0 = 609530524018264138310326718615033307496;
+
+searchNXshard(nlo, nhi, trialbound, shard, nshards) =
+{
+    my(num, absnum, x, m, rhs, r, k1, k2, t2, dcand, cnt=0);
+    for(n=nlo, nhi,
+        if((n - shard) % nshards == 0,
+            num = 36*n^3 - 19;
+            if(num != 0,
+                absnum = abs(num);
+                k1 = (n - N0)/N1;
+                forstep(t=1, trialbound, 1,
+                    if(absnum % t == 0,
+                        t2 = absnum/t;
+                        for(which=1, 2,
+                            dcand = if(which==1, t, t2);
+                            for(sgn=1, 2,
+                                x = if(sgn==1, dcand, -dcand);
+                                if(x != 0 && num % x == 0,
+                                    m = num/x;
+                                    rhs = (6*n+x)^2 + m;
+                                    if(rhs >= 0 && issquare(rhs,&r),
+                                        k2 = (x - D0)/D1;
+                                        printf("FOUND  n=%Ps  x=%Ps  y=%Ps\n", n, x, r);
+                                        printf("       k1=%Ps\n       k2=%Ps\n", k1, k2);
+                                        cnt++
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    );
+    printf("shard %Ps/%Ps done (n=%Ps..%Ps, trialbound=%Ps): %Ps solutions\n",
+           shard, nshards, nlo, nhi, trialbound, cnt);
+    cnt;
+}
+EOF
