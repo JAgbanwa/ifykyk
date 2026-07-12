@@ -1,0 +1,222 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\title{An Exact Rational Solution with \(y=9162\)}
+\author{}
+\date{12 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note records and verifies an exact rational nonintegral solution of a
+Diophantine equation with two rational parameters.  The solution gives
+\(y=9162\) (and, by symmetry, \(y=-9162\)).  All calculations are performed
+in exact rational arithmetic.  A final remark explains why this solution is
+valid for the original rational search but does not meet the later, stronger
+restriction that the reduced denominators of \(k_1\) and \(k_2\) divide the
+two large coefficients.
+\end{abstract}
+
+\section{The equation}
+
+Set
+\begin{align*}
+A&=7729484335457653901640057298531371241781,\\
+B&=7668575607239450973459863267707132263860,\\
+C&=2486598372481845396683104279916570951657,\\
+D&= 609530524018264138310326718615033307496.
+\end{align*}
+We consider
+\begin{equation}\label{eq:original}
+ y^2=
+ \bigl(6(Ak_1+B)+(Ck_2+D)\bigr)^2
+ +\frac{36(Ak_1+B)^3-19}{Ck_2+D}.
+\end{equation}
+It is convenient to introduce
+\begin{equation}\label{eq:nxdef}
+ n=Ak_1+B,\qquad x=Ck_2+D.
+\end{equation}
+Then \eqref{eq:original} becomes
+\begin{equation}\label{eq:reduced}
+ y^2=(6n+x)^2+\frac{36n^3-19}{x}.
+\end{equation}
+
+\section{The rational parameter values}
+
+Take
+\begin{equation}\label{eq:nxvalues}
+ n=-\frac{1506}{5},\qquad x=-\frac{61}{5}.
+\end{equation}
+Solving \eqref{eq:nxdef} for \(k_1,k_2\) gives
+\begin{equation}\label{eq:kformulas}
+ k_1=\frac{n-B}{A},\qquad k_2=\frac{x-D}{C}.
+\end{equation}
+Substituting \eqref{eq:nxvalues} into \eqref{eq:kformulas} yields
+\begin{equation}\label{eq:k1}
+\boxed{
+ k_1=-\frac{
+ 38342878036197254867299316338535661320806
+ }{
+ 38647421677288269508200286492656856208905
+ }}
+\end{equation}
+and
+\begin{equation}\label{eq:k2}
+\boxed{
+ k_2=-\frac{
+ 3047652620091320691551633593075166537541
+ }{
+ 12432991862409226983415521399582854758285
+ }}.
+\end{equation}
+Indeed, the numerators and denominators arise from
+\begin{align*}
+5B+1506
+ &=38342878036197254867299316338535661320806,\\
+5A
+ &=38647421677288269508200286492656856208905,\\
+5D+61
+ &=3047652620091320691551633593075166537541,\\
+5C
+ &=12432991862409226983415521399582854758285.
+\end{align*}
+Moreover,
+\begin{align*}
+\gcd(5B+1506,5A)&=1,\\
+\gcd(5D+61,5C)&=1.
+\end{align*}
+Thus the fractions in \eqref{eq:k1} and \eqref{eq:k2} are reduced, and both
+\(k_1\) and \(k_2\) are rational nonintegers.
+
+\section{Exact verification of the affine substitutions}
+
+Using \eqref{eq:k1},
+\begin{align*}
+Ak_1+B
+&=A\left(-\frac{5B+1506}{5A}\right)+B\\
+&=-\frac{5B+1506}{5}+B\\
+&=-\frac{1506}{5}.
+\end{align*}
+Similarly, using \eqref{eq:k2},
+\begin{align*}
+Ck_2+D
+&=C\left(-\frac{5D+61}{5C}\right)+D\\
+&=-\frac{5D+61}{5}+D\\
+&=-\frac{61}{5}.
+\end{align*}
+Consequently, the large-parameter equation \eqref{eq:original} is reduced
+exactly to \eqref{eq:reduced} with the values in \eqref{eq:nxvalues}.
+
+\section{Exact verification that \texorpdfstring{\(y=9162\)}{y=9162}}
+
+First,
+\begin{equation}\label{eq:linearpart}
+6n+x
+=6\left(-\frac{1506}{5}\right)-\frac{61}{5}
+=-\frac{9097}{5},
+\end{equation}
+so
+\begin{equation}\label{eq:squarepart}
+(6n+x)^2=\frac{9097^2}{25}
+=\frac{82755409}{25}.
+\end{equation}
+Next,
+\begin{align*}
+36n^3-19
+&=36\left(-\frac{1506}{5}\right)^3-19\\
+&=-\frac{122963842151}{125}.
+\end{align*}
+Since \(x=-61/5\), it follows that
+\begin{align}
+\frac{36n^3-19}{x}
+&=\left(-\frac{122963842151}{125}\right)
+  \left(-\frac{5}{61}\right)\notag\\
+&=\frac{2015800691}{25}.\label{eq:cubicpart}
+\end{align}
+Combining \eqref{eq:squarepart} and \eqref{eq:cubicpart},
+\begin{align*}
+(6n+x)^2+\frac{36n^3-19}{x}
+&=\frac{82755409+2015800691}{25}\\
+&=\frac{2098556100}{25}\\
+&=83942244\\
+&=9162^2.
+\end{align*}
+Therefore the exact solutions for \(y\) are
+\begin{equation}
+\boxed{y=9162\quad\text{or}\quad y=-9162.}
+\end{equation}
+In particular, the requested positive value \(y=9162\) is valid.
+
+\section{Status under the later denominator restriction}
+
+The reduced denominators of the two rational parameters are
+\begin{align*}
+\operatorname{den}(k_1)&=5A
+ =38647421677288269508200286492656856208905,\\
+\operatorname{den}(k_2)&=5C
+ =12432991862409226983415521399582854758285.
+\end{align*}
+Hence this solution is a valid solution of the original rational-parameter
+problem, but it does \emph{not} satisfy the later conditions
+\[
+\operatorname{den}(k_1)\mid A,
+\qquad
+\operatorname{den}(k_2)\mid C.
+\]
+The obstruction is exactly the extra factor \(5\), which is also the common
+denominator of \(n=-1506/5\) and \(x=-61/5\).
+
+\clearpage
+\appendix
+\section{Exact Magma verification}
+
+The following Magma code verifies the solution without floating-point
+arithmetic.
+
+{\small
+\begin{verbatim}
+Q := Rationals();
+
+A := 7729484335457653901640057298531371241781;
+B := 7668575607239450973459863267707132263860;
+C := 2486598372481845396683104279916570951657;
+D := 609530524018264138310326718615033307496;
+
+k1 := Q!(-38342878036197254867299316338535661320806)
+      / 38647421677288269508200286492656856208905;
+
+k2 := Q!(-3047652620091320691551633593075166537541)
+      / 12432991862409226983415521399582854758285;
+
+y := 9162;
+
+n := A*k1 + B;
+x := C*k2 + D;
+
+assert n eq Q!(-1506)/5;
+assert x eq Q!(-61)/5;
+assert y^2 eq (6*n + x)^2 + (36*n^3 - 19)/x;
+
+assert GCD(Abs(Numerator(k1)), Denominator(k1)) eq 1;
+assert GCD(Abs(Numerator(k2)), Denominator(k2)) eq 1;
+
+print "n =", n;
+print "x =", x;
+print "y =", y;
+print "RHS =", (6*n + x)^2 + (36*n^3 - 19)/x;
+\end{verbatim}
+}
+
+\end{document}
