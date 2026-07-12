@@ -25,7 +25,13 @@ The earlier equation can be reframed now as:
 ```
 y^2 = (6(7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860) + 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496)^2 + \frac{36(7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860)^3 - 19}{2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496}
 ```
-ChatGPT 5.5 Pro provided values for $k_1, k_2$ that nearly solved this problem see here ([\[5\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.pdf)) ([\[6\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.tex)). While the resulting values after some substitutions yield rational solutions to the sums of three cubes for 114, the dealbreaker comes from the fact that...
+ChatGPT 5.5 Pro provided values for $k_1, k_2$ that nearly solved this problem see here ([\[5\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.pdf)) ([\[6\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.tex)). While the resulting values after some substitutions yield rational solutions to the sums of three cubes for 114, the dealbreaker comes from the fact that given the values for $k_1$ and $k_2$ below,
+
+ $k_1=-\frac{38342878036197254867299316338535661320806}{38647421677288269508200286492656856208905}$ and 
+ $k_2=-\frac{3047652620091320691551633593075166537541}{12432991862409226983415521399582854758285}$
+
+we see that the denominator of $k_1$ is not a divisor of $7729484335457653901640057298531371241781$ likewise $k_2$ not being a divisor of $2486598372481845396683104279916570951657$ leaving us rational non-integer values of $n,x,y$ and thus rational non-integer solutions to this 114 problem.
+
 ****************************************************
 
 Fixed the `ring_nf` error.
