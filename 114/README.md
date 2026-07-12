@@ -48,6 +48,8 @@ y^2 = (46376906012745923409840343791188227450686 k_1 + 2486598372481845396683104
 ```
 ****************************************************
 
+**ARISTOTLE.md**
+
 Fixed the `ring_nf` error.
 The error you saw (`ring_nf made no progress`, reported at 104:102 in the online editor) came from the `class_dvd` lemma in `RequestProject/Main.lean`. When the file is pasted into the online editor without its header, that lemma's line lines up with the reported position, and its `ring` tactic is what invokes `ring_nf`. The original proof `convert dvd_add h (...) using 1 ; ring` was fragile: on a different Mathlib version, `convert ... using 1` leaves a goal shape that `ring`/`ring_nf` cannot make progress on.
 I replaced it with a version-robust proof that establishes the plain polynomial identity
