@@ -9,7 +9,7 @@ When $(n,x)=(77, 97)$, the already known solution aforementioned is yielded. For
 We then consider the equation: $y^2 = (6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n - 4}{x}$. An important criterion is that, $\frac{36n^3 + 54n^2 + 27n - 4}{x} \in \mathbb{Z}$. This leads to the question:
 
 ```
-Can you search for the largest modular congruences you can find where for n = a_1(modp_1) and x = a_2(modp_2),for which \frac{36n^3 + 54n^2 + 27n - 4}{x} is integer?
+Can you search for the correct modular congruences you can find where for n = a_1(modp_1) and x = a_2(modp_2),for which \frac{36n^3 + 54n^2 + 27n - 4}{x} is integer?
 ```
 
 For experimental reasons, let 
