@@ -1,1 +1,2 @@
+The equation in question in [114](https://github.com/JAgbanwa/ifykyk/tree/main/114) is from equation 7.9 of this [paper](https://figshare.com/articles/preprint/Closed_form_formulas_on_the_sums_of_three_cubes_for_k_114_192_/30509981?file=61812286) which is still in progress.
 For a bit more context on the folder, [114](https://github.com/JAgbanwa/ifykyk/tree/main/114), read the README of this [\[1\]](https://github.com/JAgbanwa/heading-somewhere-with-this), especially on Approach 2.
