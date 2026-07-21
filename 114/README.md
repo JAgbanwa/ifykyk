@@ -1,72 +1,240 @@
-From this preprint [\[1\]](https://figshare.com/articles/preprint/Closed_form_formulas_on_the_sums_of_three_cubes_for_k_114_192_/30509981?file=61812286), 
+# Sums of three cubes for 114
 
-$\Biggl( -x + \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + x)^2 + \frac{36n^3 - 19}{x}} \Biggl)^{3} + \Biggl( 2x + 6n \Biggl)^{3} = 114.$ 
+This folder studies integer solutions of
 
-To ensure that integer solutions are yielded for this problem,  
+\[
+y^2=(6n+x)^2+\frac{36n^3-19}{x}, \qquad n,x,y\in\mathbb Z,\quad x\ne0.
+\]
 
-$y^2 = (6n + x)^2 + \frac{36n^3 - 19}{x}$.
+Every such solution gives
 
-An important criterion in the above equation yielding integer solutions (and thus solving the sums of three cubes problem by extension) is this fraction $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
-we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ with one of these two scenarios playing out: 
+\[
+(y-x)^3+(2x+6n)^3+(-x-y)^3=114.
+\]
 
-*When $n = p_1 k_1 + a_1$ and $x = p_2 k_2 + a_2$ , $k_1, k_2$ could be integers for which $y$ is an integer **or** $k_1, k_2$ could be non-integers for which $y$ is an integer (in which case $k_1 | p_1$ and $k_2 | p_2$).
+Conversely, after labelling the unique even member of any integer solution of
+\(u^3+v^3+w^3=114\) as \(v\), the inverse substitution
 
-I then posed this question to Anthropic's Claude Sonnet (Medium):
+\[
+x=-\frac{u+w}{2},\qquad y=\frac{u-w}{2},\qquad
+n=\frac{u+v+w}{6}
+\]
 
+recovers an integer solution of the square equation. Thus the two problems are
+equivalent.
+
+The equation is taken from equation 7.9 of the work-in-progress
+[preprint](https://figshare.com/articles/preprint/Closed_form_formulas_on_the_sums_of_three_cubes_for_k_114_192_/30509981?file=61812286).
+
+## What the CRT construction proves
+
+Let
+
+\[
+f(z)=36z^3-19.
+\]
+
+For every odd prime \(p\equiv2\pmod3\), cubing is a bijection modulo \(p\).
+Consequently there is a unique residue \(a\pmod p\) satisfying
+
+\[
+36a^3\equiv19\pmod p.
+\]
+
+For distinct such primes \(p_i\), the Chinese remainder theorem constructs
+
+\[
+M=\prod_i p_i,\qquad A\pmod M,\qquad M\mid f(A).
+\]
+
+It follows that
+
+\[
+M\mid f(n)\qquad\text{for every }n\equiv A\pmod M.
+\]
+
+This construction is proved and numerically instantiated in
+[LargeCongruences.tex](./LargeCongruences.tex), with a Lean formalization in
+[Main.lean](./Main.lean).
+
+## Correction: independent congruences do not prove the needed divisibility
+
+Two independent conditions
+
+\[
+n\equiv B\pmod{P},\qquad x\equiv D\pmod{C}
+\]
+
+do **not** imply
+
+\[
+x\mid36n^3-19.
+\]
+
+The first condition can arrange \(P\mid f(n)\); the second can arrange
+\(C\mid f(x)\). Neither connects the variable value \(x\) to \(f(n)\).
+
+For the previously selected constants, taking \(k_1=k_2=0\) gives
+
+\[
+\begin{aligned}
+n&=7668575607239450973459863267707132263860,\\
+x&=609530524018264138310326718615033307496,
+\end{aligned}
+\]
+
+but exact arithmetic gives
+
+\[
+(36n^3-19)\bmod x
+=13003123312063609223191713487792919093\ne0.
+\]
+
+Accordingly, the earlier two-independent-class search is not presented as a
+CRT reduction of the integrality condition.
+
+There is a second reparametrization point. If
+
+\[
+n=Pk_1+B,\qquad k_1=\frac{r_1}{q_1}
+\]
+
+with \(k_1\) reduced, then
+
+\[
+q_1\mid P\quad\Longleftrightarrow\quad n\in\mathbb Z.
+\]
+
+The analogous statement holds for \(x=Ck_2+D\). Therefore allowing rational
+\(k_1,k_2\) whose reduced denominators divide \(P,C\) is exactly a change of
+coordinates on the original integer \((n,x)\)-search; it is not by itself a
+smaller search space.
+
+## Correct CRT specialization
+
+Choose \(M,A\) using the proved CRT construction and set
+
+\[
+\boxed{x=M,\qquad n=A+Mt,\qquad t\in\mathbb Z.}
+\]
+
+Writing
+
+\[
+Q=\frac{36A^3-19}{M}\in\mathbb Z,
+\]
+
+the divisibility condition is now automatic for every integer \(t\), and the
+remaining square condition is
+
+\[
+\boxed{
+\begin{aligned}
+y^2={}&36M^2t^3+36M(3A+M)t^2+12(3A+M)^2t\\
+&+(6A+M)^2+Q.
+\end{aligned}}
+\]
+
+This is a genuine integral-point problem on a genus-one curve.
+
+### Integral Weierstrass model
+
+Write the cubic as
+
+\[
+P(t)=at^3+bt^2+ct+d,
+\]
+
+where
+
+\[
+\begin{aligned}
+a&=36M^2,\\
+b&=36M(3A+M),\\
+c&=12(3A+M)^2,\\
+d&=(6A+M)^2+Q.
+\end{aligned}
+\]
+
+The substitution
+
+\[
+X=at,\qquad Y=ay
+\]
+
+maps it to the integral Weierstrass equation
+
+\[
+\boxed{Y^2=X^3+bX^2+acX+a^2d.}
+\]
+
+An integral point on this Weierstrass model returns an admissible
+\((t,y)\) only when
+
+\[
+a\mid X,\qquad a\mid Y.
+\]
+
+Every recovered point is checked again in the original square equation and
+in the cube identity before being reported.
+
+## Rank-guided selection of CRT moduli
+
+The objective is not to maximize the number of digits in \(M\). The objective
+is to choose CRT data whose associated elliptic curve has favorable arithmetic.
+The search workflow is:
+
+1. Generate primes \(p\equiv2\pmod3\) and their unique roots of
+   \(36A^3\equiv19\pmod p\).
+2. Form singleton moduli and selected CRT products \(M\).
+3. Construct the Weierstrass model above and compute its global root number.
+4. Prioritize root number \(-1\) as a heuristic for odd rank; this is a
+   prioritization rule, not proof that a useful integral point exists.
+5. Compute algebraic-rank bounds, analytic rank, and Mordell--Weil generators
+   for the most promising curves.
+6. Determine integral points, retaining only those in the sublattice
+   \(a\mid X,Y\).
+7. Independently verify every recovered \((n,x,y)\) and the resulting
+   \((u,v,w)\).
+
+Positive rank does not guarantee a relevant integral point, and rank zero does
+not automatically exclude torsion points in the required sublattice. Rank and
+root number are filters for allocating computation, not substitutes for the
+final exact test.
+
+The executable implementation is
+[rank_guided_elliptic_search.py](./rank_guided_elliptic_search.py). With SageMath:
+
+```bash
+sage -python 114/rank_guided_elliptic_search.py \
+  --primes 17,23,29,41,47,53,59,71,83,89 \
+  --max-product-size 2 \
+  --compute-rank \
+  --analytic-rank \
+  --t-bound 100000
 ```
-Can you search for the largest modular congruences you can find where for n = a_1(modp_1) and x = a_2(modp_2), a_1, a_2, p_1 ,p_2 could be as large as 30 digits to 40 digits long for all I care for which (36n^3 - 19)/x is integer? 
-```
-The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/large_congruences.pdf)) and as .tex ([\[3\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/LargeCongruences.tex)). Find the Lean formalisation of these results here [\[4\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/Main.lean).
 
-We proceed to choose one of the congruences, preferably the 'largest' .i.e. the 40-digit long congruences of $n,x$ for which $\frac{36n^3 - 19}{x} \in \mathbb{Z}$. Thus, $n = 7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860$ and $x = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496$. 
+For 30- or 40-digit primes, begin with root-number screening and small exact
+\(t\)-ranges, then enable rank and integral-point computations selectively;
+factoring conductors and proving Mordell--Weil completeness can dominate the
+runtime.
 
-The earlier equation can be reframed now as:
+## Status of the rational point with \(y=9162\)
 
-```
-y^2 = (6(7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860) + 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496)^2 + \frac{36(7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860)^3 - 19}{2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496}
-```
-After expanding, the aforementioned equation becomes:
+The values
 
-```
-y^2 = (46376906012745923409840343791188227450686 k_1 + 2486598372481845396683104279916570951657 k_2 + 46620984167454969979069506324857826890656)^2 + \frac{16624709489189407440388643213728981685328681791089732876601710038587810847889998299944067715532425036389785803066750571476 k_1^3 + 49481117808109917372654153079508763668111544754357197384070641920072789816863012403689690888343605217704925500637542381680 k_1^2 + 49091204092562086792376670895376907696653809047079935546700717754945371359211889852498465756993689409319452027811965860800 k_1 + 16234787638949931054338904909272730014525041302296577490759268200927073136776735826378161845204226655836573767036816415981}{2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496}
-```
+\[
+n=-\frac{1506}{5},\qquad x=-\frac{61}{5},\qquad y=9162
+\]
 
-ChatGPT 5.5 Pro provided values for $k_1, k_2$ that nearly solved this problem see here ([\[5\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.pdf)) ([\[6\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/rational_solution_y_9162.tex)). While the resulting values after some substitutions yield rational solutions to the sums of three cubes for 114, the dealbreaker comes from the fact that given the values for $k_1$ and $k_2$ below,
+are an exact rational point, verified in
+[rational_solution_y_9162.tex](./rational_solution_y_9162.tex). They give a
+rational representation of 114, not an integer representation. The common
+denominator \(5\) is precisely why that point does not satisfy the integer
+problem.
 
- $k_1=-\frac{38342878036197254867299316338535661320806}{38647421677288269508200286492656856208905}$ and 
- $k_2=-\frac{3047652620091320691551633593075166537541}{12432991862409226983415521399582854758285}$
+## Related material
 
-we see that the denominator of $k_1$ is not a divisor of $7729484335457653901640057298531371241781$ likewise $k_2$ not being a divisor of $2486598372481845396683104279916570951657$ leaving us rational non-integer values of $n,x,y$ and thus rational non-integer solutions to this 114 problem instead of the desired integer solutions.
-
-A valid question to be asked is:
-```
-Consider that k_1 = \frac{p_1}{q_1} and k_2 = \frac{p_2}{q_2}, aside from $(k_1, k_2) = (-\frac{38342878036197254867299316338535661320806}{38647421677288269508200286492656856208905}, -\frac{3047652620091320691551633593075166537541}{12432991862409226983415521399582854758285})$, find rational solutions of (k_1, k_2) to this equation:
-
-y^2 = (46376906012745923409840343791188227450686 k_1 + 2486598372481845396683104279916570951657 k_2 + 46620984167454969979069506324857826890656)^2 + \frac{16624709489189407440388643213728981685328681791089732876601710038587810847889998299944067715532425036389785803066750571476 k_1^3 + 49481117808109917372654153079508763668111544754357197384070641920072789816863012403689690888343605217704925500637542381680 k_1^2 + 49091204092562086792376670895376907696653809047079935546700717754945371359211889852498465756993689409319452027811965860800 k_1 + 16234787638949931054338904909272730014525041302296577490759268200927073136776735826378161845204226655836573767036816415981}{2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496}
-
-(where q_1 | 7729484335457653901640057298531371241781 and q_2 | 2486598372481845396683104279916570951657) for which $y$ is integer?
-```
-
-**See also**
-
-[\[1\]](https://github.com/JAgbanwa/heading-somewhere-with-this) (especially the README).
-
-****************************************************
-
-**ARISTOTLE.md**
-
-Fixed the `ring_nf` error.
-The error you saw (`ring_nf made no progress`, reported at 104:102 in the online editor) came from the `class_dvd` lemma in `RequestProject/Main.lean`. When the file is pasted into the online editor without its header, that lemma's line lines up with the reported position, and its `ring` tactic is what invokes `ring_nf`. The original proof `convert dvd_add h (...) using 1 ; ring` was fragile: on a different Mathlib version, `convert ... using 1` leaves a goal shape that `ring`/`ring_nf` cannot make progress on.
-I replaced it with a version-robust proof that establishes the plain polynomial identity
-`36·n³ − 19 = (36·A³ − 19) + (n − A)·(36·(n² + n·A + A²))` (which `ring` always proves, since it is a genuine identity), rewrites with it, and then closes the goal with `dvd_add` together with `M ∣ n − A` (from `n ≡ A [ZMOD M]`).
-The file builds cleanly with no `sorry`. Changes are committed and pushed.
-
-Formalized the paper "Large Modular Congruences for which x ∣ 36n³ − 19" (a CRT / cube-root construction) in Lean 4 / Mathlib. All results live in `RequestProject/Main.lean` in namespace `LargeCongruences`, and the project builds cleanly with no `sorry` and only permitted axioms.
-What was proved:
-- **Lemma 1 (cube bijection).** `cube_bijective`: for a prime `p ≡ 2 (mod 3)`, `t ↦ t³` is a bijection of `ZMod p`; and `exists_cube_root`: every element has a cube root.
-- **Construction 1.** `isUnit_thirtysix` (36 is a unit mod such `p ≠ 2`), `exists_root_zmod` (there is a residue `a` with `36a³ = 19` in `ZMod p`), and `key_single` (its integer/congruence-class form: there is `a` with `p ∣ 36n³ − 19` for all `n ≡ a (mod p)`).
-- **Theorem 1 (multi-prime CRT combination).** `multiprime`: for any finite set of distinct primes each `≡ 2 (mod 3)` and `≠ 2`, with product `M`, there is a residue `A` such that `M ∣ 36n³ − 19` for every `n ≡ A (mod M)`. Proved by induction over the finite set using an explicit Bézout/CRT combination and coprimality of distinct primes (`coprime_prime_prod`).
-- A generic class lemma `class_dvd` upgrading a single verified representative to an entire residue class.
-- **Numerical instances (§4–§7).** All four explicit instances (two/three primes at 30 and 40 digits) are verified by exact integer arithmetic (`native_decide`): the root identities `36aᵢ³ ≡ 19 (mod pᵢ)`, the product `M = ∏ pᵢ`, the exact division `36A³ − 19 = M·Q`, and the resulting infinite family `M ∣ 36n³ − 19` for `n ≡ A (mod M)` (theorems `instance_k2_30digit`, `instance_k3_30digit`, `instance_k2_40digit`, `instance_k3_40digit`).
-Note recorded in the file's docstring: primality of the 30-/40-digit `pᵢ` (checked externally in the paper) is not re-certified inside Lean, as it is computationally expensive and not needed — the family statements follow purely from the exact divisibility `M ∣ 36A³ − 19`.
-Axiom check: the general theorems depend only on `propext`, `Classical.choice`, `Quot.sound`; the numerical instances additionally use `Lean.ofReduceBool`/`Lean.trustCompiler` from `native_decide`.
+- [Companion repository and earlier approaches](https://github.com/JAgbanwa/heading-somewhere-with-this)
+- [Large congruence PDF](./large_congruences.pdf)
+- [Exact rational \(y=9162\) PDF](./rational_solution_y_9162.pdf)
