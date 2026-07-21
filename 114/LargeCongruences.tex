@@ -25,39 +25,48 @@
 \begin{abstract}
 We give a fully rigorous, arbitrarily-scalable construction of congruence classes
 $n \equiv a_1 \pmod{p_1}$ and (more generally) $n\equiv A \pmod M$ such that
-$36n^3-19$ is exactly divisible by a prescribed modulus $M$ built from primes
+$36n^3-19$ is divisible by a prescribed modulus $M$ built from primes
 of any prescribed size. The construction rests on the elementary fact that cubing
 is a bijection modulo any prime $p\equiv 2\pmod 3$. We instantiate this with
 30-digit and 40-digit primes, verify every claim by direct computation (both
 symbolically for small primes and numerically for the large instances), and
-exhibit an explicit family in which $36n^3-19$ is exactly divisible by a
+exhibit an explicit family in which $36n^3-19$ is divisible by a
 120-digit modulus, itself a product of three 40-digit primes. All numerical
 claims below were checked by exact (arbitrary precision) integer arithmetic.
 \end{abstract}
 
-\section{Problem restatement}
+\section{Problem restatement and corrected scope}
 
-We seek congruences
+We ultimately seek integers \(n,x,y\), with \(x\ne0\), satisfying
 \[
-  n \equiv a_1 \pmod{p_1}, \qquad x \equiv a_2 \pmod{p_2}
+  y^2=(6n+x)^2+\frac{36n^3-19}{x}.
 \]
-with $a_1,p_1,a_2,p_2$ as large as we like, such that
+A necessary condition is \(x\mid36n^3-19\).  The CRT construction in this
+note solves that divisibility condition in the following precise, uniform
+sense: it constructs a modulus \(M\) and residue \(A\pmod M\) such that
 \[
-  \frac{36n^3-19}{x} \in \mathbb{Z}.
+  M\mid36n^3-19\qquad\text{for every }n\equiv A\pmod M.
 \]
-Read literally, a congruence class for $n$ can only be paired with a \emph{fixed}
-divisor $x$ that works for \emph{every} representative of the class if $x$ divides
-the modulus $p_1$ itself (since $36n^3-19$ ranges over infinitely many values as
-$n$ ranges over the class, and only a common factor of the modulus can divide all
-of them). This forces $p_2 \mid p_1$, and the richest non-trivial choice is
-$x = p_1$ exactly, i.e.\ $a_2 = 0$, $p_2 = p_1$.
+We then make the structurally valid specialization
+\[
+  x=M,\qquad n=A+Mt.
+\]
+This guarantees the fraction is integral for every \(t\in\mathbb Z\).
 
-To get a genuinely large, genuinely non-trivial $x$ that still divides
-$36n^3-19$ for a whole residue class of $n$ (not just a single verified integer),
-we combine \emph{two independent} such congruences via the Chinese Remainder
-Theorem, so that $x$ becomes the product of two (or more) large primes, each
-individually up to 30 digits. This is the construction below; it directly
-generalizes to any number of primes.
+It is important not to infer more than this.  Two independent congruences
+\[
+  n\equiv a_1\pmod{p_1},\qquad x\equiv a_2\pmod{p_2}
+\]
+do not generally imply \(x\mid36n^3-19\): the first can control divisibility
+by \(p_1\), while the second controls a polynomial evaluated at \(x\), not
+divisibility of the polynomial evaluated at \(n\).  Thus the variable class
+\(x=p_2k_2+a_2\) is not used below as a consequence of CRT.
+
+The construction is arbitrarily scalable: choose distinct primes
+\(p_i\equiv2\pmod3\), solve \(36a_i^3\equiv19\pmod{p_i}\), combine the roots
+by CRT, and take \(M=\prod_i p_i\).  Larger moduli are easy to manufacture,
+but size alone is not the selection objective; Section~\ref{sec:elliptic}
+uses the arithmetic of the resulting elliptic curves to prioritize moduli.
 
 \section{The key lemma}
 
@@ -112,9 +121,91 @@ $M$ divides $36n^3-19$.
 \end{proof}
 
 So Theorem~\ref{thm:crt} answers the original question in the strong (infinite
-family) sense: $n\equiv A\pmod M$ and $x = M$ is an exact divisor of $36n^3-19$
+family) sense: $n\equiv A\pmod M$ and $x = M$ is a divisor of $36n^3-19$
 for \emph{every} such $n$, and $M$, $A$ can be made as large as desired by
 taking more/larger primes $p_i$.
+
+\section{Corrected elliptic-curve specialization}\label{sec:elliptic}
+
+Let \(M,A\in\mathbb Z\), with \(M\ne0\), satisfy
+\[
+  M\mid36A^3-19,
+  \qquad
+  Q=\frac{36A^3-19}{M}.
+\]
+Set
+\[
+  x=M,\qquad n=A+Mt,\qquad t\in\mathbb Z.
+\]
+Expanding by exact integer arithmetic gives
+\[
+ \frac{36(A+Mt)^3-19}{M}
+ =Q+108A^2t+108AMt^2+36M^2t^3.
+\]
+Consequently the remaining square condition is
+\begin{equation}\label{eq:elliptic-family}
+\boxed{
+\begin{aligned}
+ y^2={}&36M^2t^3+36M(3A+M)t^2+12(3A+M)^2t\\
+      &+(6A+M)^2+Q.
+\end{aligned}}
+\end{equation}
+This is a genuine integral-point problem on a genus-one curve (provided the
+cubic is nonsingular), and divisibility has already been solved structurally.
+
+Write the right side of \eqref{eq:elliptic-family} as
+\[
+  P(t)=at^3+bt^2+ct+d,
+\]
+where
+\[
+\begin{aligned}
+a&=36M^2,&
+b&=36M(3A+M),\\
+c&=12(3A+M)^2,&
+d&=(6A+M)^2+Q.
+\end{aligned}
+\]
+The substitution
+\[
+  X=at,\qquad Y=ay
+\]
+gives the integral Weierstrass model
+\begin{equation}\label{eq:weierstrass}
+  Y^2=X^3+bX^2+acX+a^2d.
+\end{equation}
+An integral point on \eqref{eq:weierstrass} maps back to an admissible
+integer pair \((t,y)\) only if \(a\mid X\) and \(a\mid Y\).  Every recovered
+point must then be checked in the original equation.  The associated cubes
+are
+\[
+  u=y-M,\qquad v=2M+6(A+Mt),\qquad w=-M-y,
+\]
+and exact verification requires \(u^3+v^3+w^3=114\).
+
+\subsection{Rank-guided modulus selection}
+
+The scalable CRT theorem creates infinitely many candidate pairs \((M,A)\).
+They should not be ordered merely by the number of digits in \(M\).  For each
+singleton prime or selected CRT product, we instead:
+
+\begin{enumerate}
+\item construct \eqref{eq:weierstrass} and its minimal model;
+\item compute the global root number;
+\item use root number \(-1\) as a heuristic priority for odd rank;
+\item compute algebraic-rank bounds, analytic rank, and Mordell--Weil
+      generators for the most promising curves;
+\item determine integral points and retain only the sublattice
+      \(a\mid X,Y\);
+\item verify the original square equation and the sum of cubes exactly.
+\end{enumerate}
+
+Root number and rank are filters, not certificates of an integral solution.
+Positive rank need not produce a point in the required sublattice, while
+rank-zero curves can still have torsion points that must be checked.  The
+script \texttt{rank\_guided\_elliptic\_search.py} implements the construction,
+PARI rank bounds and analytic rank, bounded \(t\)-searches, and exact recovery
+tests.
 
 \section{Sanity check on small primes}
 
@@ -124,8 +215,8 @@ $p<200$ with $p\equiv 2\pmod 3$: for each such $p$, the formula's output $a$
 was compared against an exhaustive search over $\{0,\dots,p-1\}$ for roots of
 $36t^3\equiv 19\pmod p$, confirming in every case that (i) a root exists,
 (ii) it is unique, and (iii) it matches the closed-form value from the lemma.
-Representative small case: $p=17$ gives $a=14$, and indeed
-$36\cdot 14^3-19 = 98685 = 17\cdot 5805$.
+Representative small case: $p=17$ gives the unique root $a=1$, and indeed
+$36\cdot 1^3-19 = 17$.
 
 \section{Two 30-digit primes ($k=2$)}
 
@@ -181,7 +272,7 @@ with CRT representative (90 digits):
 
 By Theorem~\ref{thm:crt}, for \emph{every} integer $n\equiv A\pmod M$,
 \[
-  x = M \quad\text{exactly divides}\quad 36n^3-19 .
+  x = M \quad\text{divides}\quad 36n^3-19 .
 \]
 Concretely, at $n=A$, $36A^3-19$ is a 270-digit integer, and $(36A^3-19)/M = Q$
 is the following 180-digit integer:
@@ -205,7 +296,7 @@ CRT gives the 80-digit modulus $M=p_1p_2$ and 80-digit representative $A$:
 \numline{M}{19220123168672920512532048525080739795893456098633704192461052168447373009581117}
 \numline{A}{12055573306960757229878249326862599227290509643013675419894826308035075337947215}
 
-so that for every $n\equiv A\pmod M$, $M$ exactly divides $36n^3-19$. At
+so that for every $n\equiv A\pmod M$, $M$ divides $36n^3-19$. At
 $n=A$, $36A^3-19$ is a 239-digit integer, and $(36A^3-19)/M=Q$ is the
 following 160-digit integer:
 
@@ -235,7 +326,7 @@ with CRT representative (119 digits):
 
 By Theorem~\ref{thm:crt}, for \emph{every} integer $n\equiv A\pmod M$,
 \[
-  x = M \quad\text{exactly divides}\quad 36n^3-19 .
+  x = M \quad\text{divides}\quad 36n^3-19 .
 \]
 At $n=A$, $36A^3-19$ is a 359-digit integer, and $(36A^3-19)/M=Q$ is the
 following 240-digit integer:
@@ -254,10 +345,11 @@ Dirichlet). Nothing here is specific to 30-digit or 40-digit numbers --- the
 same construction works verbatim for 100-digit or 1000-digit primes; these
 sizes were simply the scales requested. Using $k$ primes of $d$ digits each
 yields a modulus $M$ (and hence divisor $x$) of size $\approx dk$ digits.
-\item \textbf{What ``largest'' means here.} Since $x$ is forced to be (up to
-sign/unit) a product of the $p_i$ for the divisibility to hold across an
-entire residue class of $n$ (see \S1), the meaningful notion of ``largest'' is
-``most/largest primes multiplied together.'' The $k=3$, 40-digit instance in
+\item \textbf{What ``largest'' means here.} In this construction, $x=M$ is chosen to be a product of the $p_i$ so that
+divisibility holds across an entire residue class of $n$.  Increasing the
+number or size of the primes makes $M$ larger, but the elliptic-curve
+selection criteria in Section~\ref{sec:elliptic} are more relevant than a
+notion of ``largest.'' The $k=3$, 40-digit instance in
 \S7 ($x$ a 120-digit number, $n$ a 119-digit number) is the largest computed
 here; $k=4,5,\dots$ or larger primes would push this arbitrarily further at
 the cost of more/larger primes, with no change in the method.
@@ -269,8 +361,13 @@ problem --- one has to search and factor rather than construct. The
 CRT/cube-root method above sidesteps that difficulty entirely by
 \emph{choosing} the primes first and reverse-engineering $n$, which is why it
 scales cleanly to 30-digit (or larger) moduli.
+\item \textbf{Corrected next step.}  The CRT output is now fed into the fixed
+specialization \(x=M,\ n=A+Mt\), which yields the elliptic family
+\eqref{eq:elliptic-family}.  Independent affine congruence classes for \(n\)
+and a variable \(x\) are not claimed to imply \(x\mid36n^3-19\).
+\enlargethispage{3\baselineskip}
 \item \textbf{Verification.} Every numerical claim in this document was
-checked with exact Python/SymPy arbitrary-precision arithmetic: primality of
+checked with exact Python and SymPy arbitrary-precision arithmetic: primality of
 each $p_i$, the congruence $p_i\equiv 2\pmod 3$, the root identity
 $36a_i^3\equiv 19\pmod{p_i}$, the CRT combination, and the final exact
 divisions $36A^3-19 = M\cdot Q$, for the $k=2$ and $k=3$ instances at both the
