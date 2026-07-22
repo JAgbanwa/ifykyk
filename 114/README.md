@@ -46,7 +46,7 @@ y^2 = (46376906012745923409840343791188227450686 k_1 + 2486598372481845396683104
 
 (where q_1 | 7729484335457653901640057298531371241781 and q_2 | 2486598372481845396683104279916570951657) for which $y$ is integer?
 ```
-
+I posed the same question to Claude Fable 5 and its response can be found here: [A](https://claude.ai/share/6ce8538b-b44c-46e9-a0af-e74e8450e4b3).
 **See also**
 
 [\[1\]](https://github.com/JAgbanwa/heading-somewhere-with-this) (especially the README).
