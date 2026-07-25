@@ -61,7 +61,16 @@ I posed the same question to Claude Fable 5 and its response can be found here:[
 
 **See also**
 
-[\[1\]](https://github.com/JAgbanwa/heading-somewhere-with-this) (especially the README).
+[\[B\]](https://github.com/JAgbanwa/heading-somewhere-with-this) (especially the README).
+
+**ALTERNATE APPROACH**
+
+Considering the provided congruences for $n,x$ for which (36n^3 - 19)/x was integer, I posed this question to Claude Fable 5 [\[3\]](https://claude.ai/chat/17c4aa7b-5759-4cfb-8987-8868265ce3c2) and ChatGPT 5.6 Sol [\[4\]](https://chatgpt.com/c/6a6540d6-3420-83eb-a7b6-a6aa30fb4183), and the common take-aways were:
+
+```text
+x ≡ 7 (mod 12)
+n ≡ 0 (mod 3)
+```
 
 ****************************************************
 
