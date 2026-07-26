@@ -73,6 +73,17 @@ n\equiv0\pmod3,\quad n\not\equiv2\pmod5,\quad
 n\not\equiv0\pmod7}
 $$
 
+$$
+\boxed{
+\begin{aligned}
+x &\mid 36n^3-19,\\
+x &\equiv 7 \pmod{12},\\
+n &\equiv 0 \pmod{3},\\
+n &\not\equiv 2 \pmod{5},\\
+n &\not\equiv 0 \pmod{7}.
+\end{aligned}
+}
+$$
 ****************************************************
 
 **ARISTOTLE.md**
