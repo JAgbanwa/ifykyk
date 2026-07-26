@@ -68,15 +68,9 @@ I posed the same question to Claude Fable 5 and its response can be found here:[
 Considering the provided congruences for $n,x$ for which (36n^3 - 19)/x was integer, I posed this question to Claude Fable 5 [\[7\]](https://claude.ai/chat/17c4aa7b-5759-4cfb-8987-8868265ce3c2) and ChatGPT 5.6 Sol [\[8\]](https://chatgpt.com/c/6a6540d6-3420-83eb-a7b6-a6aa30fb4183), and the common take-aways were:
 
 $$
-\boxed{
-\begin{gathered}
-x \mid 36n^3-19,\\[3pt]
-x \equiv 7 \pmod{12},\\[3pt]
-n \equiv 0 \pmod{3},\\[3pt]
-n \not\equiv 2 \pmod{5},\\[3pt]
-n \not\equiv 0 \pmod{7}.
-\end{gathered}
-}
+\boxed{x\mid 36n^3-19,\quad x\equiv7\pmod{12},\quad
+n\equiv0\pmod3,\quad n\not\equiv2\pmod5,\quad
+n\not\equiv0\pmod7}
 $$
 
 ****************************************************
