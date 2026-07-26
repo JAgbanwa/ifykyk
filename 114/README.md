@@ -89,9 +89,17 @@ and $x$ this way:
 ```
  12 k_4 + 7 = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496. 
 ```
-The idea is to pose questions to AI agents on values of ```k_1 , k_2``` for which ```k_3 , k_4``` are integers. In the best case scenario, we might get values that have a coherent sequence which could yield closed-form values that could get us somewhere in this pursuit.
+The idea is to find out values of ```k_1 , k_2``` for which ```k_3 , k_4``` are integers. From WolframAlpha, 
 
-(For convenience, we might use different variables in conversations with AI agents when asking questions pertaining to the two reframed equations.)
+```
+(k_2 , k_4) = (12 r + 3, 2486598372481845396683104279916570951657 r + 672443803455316694029969963197062180205)
+```
+
+```
+(k_1 , k_3) = (3 s + 2 , 7729484335457653901640057298531371241781 s + 7709181426051586258913325954923291582474)
+```
+
+(For convenience, we might use different variables in conversations with WolframAlpha when asking questions pertaining to the two reframed equations.)
 
 ****************************************************
 
