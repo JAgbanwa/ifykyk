@@ -78,6 +78,21 @@ n &\not\equiv 0 \pmod{7}.
 \end{aligned}
 }
 $$
+
+In light of the above congruence conditions, we reframe $n$ this way:
+
+```
+3 k_3 = 7729484335457653901640057298531371241781 k_1 + 7668575607239450973459863267707132263860
+```
+and $x$ this way:
+
+```
+ 12 k_4 + 7 = 2486598372481845396683104279916570951657 k_2 + 609530524018264138310326718615033307496. 
+```
+The idea is to pose questions to AI agents on values of ```k_1 , k_2``` for which ```k_3 , k_4``` are integers. In the best case scenario, we might get values that have a coherent sequence which could yield closed-form values that could get us somewhere in this pursuit.
+
+(For convenience, we might use different variables in conversations with AI agents when asking questions pertaining to the two reframed equations.)
+
 ****************************************************
 
 **ARISTOTLE.md**
