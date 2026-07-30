@@ -1,0 +1,42 @@
+def generate_congruences(digits=10):
+    # Generate two distinct primes
+    p = random_prime(10^digits - 1, False, 10^(digits-1))
+    q = random_prime(10^digits - 1, False, 10^(digits-1))
+    while q == p:
+        q = random_prime(10^digits - 1, False, 10^(digits-1))
+    
+    print(f"p = {p}")
+    print(f"q = {q}")
+    
+    # Find root of P(n) mod p
+    R.<n> = PolynomialRing(Zmod(p))
+    P = 36*n^3 + 36*n^2 + 12*n + 1
+    roots = P.roots(multiplicities=False)
+    
+    if not roots:
+        print("No roots mod p; try again")
+        return None
+    
+    a1 = Integer(roots[0])
+    if a1 == 0:
+        a1 = p  # make it non-zero
+    
+    b1 = p
+    a2 = p % q
+    if a2 == 0:
+        a2 = q  # ensure non-zero (though p%q=0 only if q|p, impossible for primes)
+    b2 = q
+    
+    print(f"n ≡ {a1} (mod {b1})")
+    print(f"x ≡ {a2} (mod {b2})")
+    print(f"Verification: For n = {a1}, P(n) = {36*a1^3 + 36*a1^2 + 12*a1 + 1}")
+    print(f"P(n) mod p = {(36*a1^3 + 36*a1^2 + 12*a1 + 1) % p}")
+    print(f"x = p satisfies x ≡ {a2} (mod {q})? {p % q == a2}")
+    print(f"And x = p divides P(n)? {((36*a1^3 + 36*a1^2 + 12*a1 + 1) % p == 0)}")
+    
+    return (a1, b1, a2, b2)
+
+print("=== 10-digit example ===")
+res1 = generate_congruences(10)
+print("\n=== 20-digit example ===")
+res2 = generate_congruences(20)
