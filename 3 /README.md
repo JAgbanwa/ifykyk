@@ -25,3 +25,9 @@ Given the fraction (36n^3 + 54n^2 + 27n + 4)/x, find the correct congruences of 
 ``
 
 The answers are found [\[here\]](https://github.com/JAgbanwa/ifykyk/blob/main/3%20/output-final_aristotle%204/ANSWERS.md) [\[the entire folder\]](https://github.com/JAgbanwa/ifykyk/tree/main/3%20/output-final_aristotle%204).
+
+In one case, the congruences are
+
+``
+(n, x, s, t) = (2441406250s + 1628355764, 9999999999t + 1220703125, -39392949568714534/1220703125, -94910684288491743323/3333333333)
+``
