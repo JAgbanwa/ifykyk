@@ -9,9 +9,9 @@ $\Biggl( -x + \sqrt{(6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}} \Biggl)^
 
 Thus, finding integer solutions reduces to finding integers ``(n,x)`` such that:
 
-\dfrac{36n³+54n²+27n+4}{x} is an integer.
+``\dfrac{36n³+54n²+27n+4}{x}`` is an integer.
 
-(6n+3+x)² + (36n³+54n²+27n+4)/x is a perfect square.
+``(6n+3+x)² + (36n³+54n²+27n+4)/x`` is a perfect square.
 
 
 **Step 1**: Integrality Condition
@@ -36,8 +36,9 @@ The known 2019 solution:
 ``
 
 is recovered by the congruence family:
-(n, x) = (-78785897509073304, -284732052864254526844)
 
+``(n, x) = (-78785897509073304, -284732052864254526844)``
+``
  
 An approach was to find congruences of $(n, x)$ for which $\frac{36n^3 + 54n^2 + 27n + 4}{x} \in \mathbb{Z}$. This was my prompt to Aristotle.harmonic.fun:
 
