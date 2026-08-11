@@ -1,9 +1,10 @@
 Problem: Find integer solutions to x³ + y³ + z³ = 3.
 
-**Method**: I use the algebraic identity:
+**Method**: 
 ****************************************************************************
 
 I use the algebraic identity:
+
 $\Biggl( -x + \sqrt{(6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}} \Biggl)^{3} + \Biggl(2x + 6n + 3\Biggl)^{3} = 3$.
 
 Thus, finding integer solutions reduces to finding integers ``(n,x)`` such that:
