@@ -1,4 +1,4 @@
-Problem: Find integer solutions to x³ + y³ + z³ = 3.
+Problem: Find integer solutions to ``x³ + y³ + z³ = 3``.
 
 **Method**: 
 ****************************************************************************
@@ -63,3 +63,4 @@ In one case, the congruences are
 | 5 | 71 | 42351647362715016953416125033982098102569580078125 | ---|
 
 
+This approach as used here will be applied [\[here\]](https://github.com/JAgbanwa/ifykyk/tree/main/114) for the case of 114.
