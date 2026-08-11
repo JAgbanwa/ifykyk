@@ -36,11 +36,6 @@ The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAg
 
  
 
-
-``
-Given the fraction (36n^3 + 54n^2 + 27n + 4)/x, find the correct congruences of n,k for which the fraction is an integer. Generate congruences x \equiv a_1(modb_1) and n \equiv a_2(modb_2) for which a_1, a_2, b_1, b_2 are 10-digit, 20-digit,...,50 digits for which (36n^3 + 54n^2 + 27n + 4)/x \equiv \mathbb{Z}. Ensure you are providing correct answers.
-``
-
 The answers are found [\[here\]](https://github.com/JAgbanwa/ifykyk/blob/main/3%20/output-final_aristotle%204/ANSWERS.md) [\[the entire folder\]](https://github.com/JAgbanwa/ifykyk/tree/main/3%20/output-final_aristotle%204).
 
 In one case, the congruences are
