@@ -1,24 +1,38 @@
+Problem: Find integer solutions to x³ + y³ + z³ = 3.
+
+**Method**: I use the algebraic identity:
+****************************************************************************
+
+I use the algebraic identity:
 $\Biggl( -x + \sqrt{(6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}} \Biggl)^{3} + \Biggl( -x - \sqrt{(6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}} \Biggl)^{3} + \Biggl(2x + 6n + 3\Biggl)^{3} = 3$.
 
-For the above expression to hold, the equation
+Thus, finding integer solutions reduces to finding integers ``(n,x)`` such that:
 
-``
-y^2 = (6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}
-``
+\dfrac{36n³+54n²+27n+4}{x} is an integer.
 
-has to be solvable in integers. An example of a solution set is:
+(6n+3+x)² + (36n³+54n²+27n+4)/x is a perfect square.
 
-``
-(n, x, y) = (-78785897509073304, −284732052864254526844, ±285204768357707853876)
-``
+**Step 1**: Integrality Condition
+****************************************************************************
 
-upon whose substitutions leads to:
+I solve x | (36n³+54n²+27n+4) using modular arithmetic. This gives parametric congruences of the form:
 
-``
-569936821221962380720^3 +  (−569936821113563493509)^3 +  (−472715493453327032)^3 = 3
-``
+``n ≡ a_2 (mod b_2), x ≡ a_1 (modb_1)``.
 
-A prerequisite for the integrality of $y^2 = (6n + 3 + x)^2 + \frac{36n^3 + 54n^2 + 27n + 4}{x}$ is $\frac{36n^3 + 54n^2 + 27n + 4}{x} \in \mathbb{Z}$. An approach was to find congruences of $(n, x)$ for which $\frac{36n^3 + 54n^2 + 27n + 4}{x} \in \mathbb{Z}$. This was my prompt to Aristotle.harmonic.fun:
+**Step 2**: Square Condition
+****************************************************************************
+
+For each congruence family, I substitute into A and check if it is a perfect square.
+
+Validation:
+The known 2019 solution:
+569936821221962380720³ + (-569936821113563493509)³ + (-472715493453327032)³ = 3
+
+is recovered by the congruence family:
+(n, x) = (-78785897509073304, -284732052864254526844)
+
+ 
+An approach was to find congruences of $(n, x)$ for which $\frac{36n^3 + 54n^2 + 27n + 4}{x} \in \mathbb{Z}$. This was my prompt to Aristotle.harmonic.fun:
 
 ``
 Given the fraction (36n^3 + 54n^2 + 27n + 4)/x, find the correct congruences of n,k for which the fraction is an integer. Generate congruences x \equiv a_1(modb_1) and n \equiv a_2(modb_2) for which a_1, a_2, b_1, b_2 are 10-digit, 20-digit,...,50 digits for which (36n^3 + 54n^2 + 27n + 4)/x \equiv \mathbb{Z}. Ensure you are providing correct answers.
