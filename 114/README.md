@@ -32,7 +32,7 @@ An approach was to find congruences of $(n, x)$ for which $\frac{36n^3 - 19}{x} 
 ```
 Given (350892m^3 - 1)/k, find the correct congruences of m,kfor which the fraction is an integer. Generate congruences k \equiv a_1(modb_1) and m \equiv a_2(modb_2) for which a_1, a_2, b_1, b_2 are 10-digit, 20-digit,...,100 digits for which (350892m^3 - 1)/k \equiv \mathbb{Z}. Ensure you are providing correct answers. 
 ```
-The resulting results can be found here; as .pdf ([\[2\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/large_congruences.pdf)) and as .tex ([\[3\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/LargeCongruences.tex)). Find the Lean formalisation of these results here [\[4\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/Main.lean).
+The results can be found here; Find the Lean formalisation of these results here [\[1\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/output-final_aristotle%206/RESULTS.md).
 
  
 
