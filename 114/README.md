@@ -18,6 +18,9 @@ Thus, finding integer solutions reduces to finding integers ``(n,x)`` such that:
 **Step 1**: Integrality Condition
 ****************************************************************************
 
+It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
+we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$: 
+
 I solve x | (36n³-19) using modular arithmetic. This gives parametric congruences of the form:
 
 ``n ≡ a_2 (mod b_2), x ≡ a_1 (modb_1)``.
@@ -48,11 +51,14 @@ The results can be found here; Find the Lean formalisation of these results here
 
 
 i mention conditions for each chunk after this.
+We consider the terms $s = \dfrac{a}{b}$ and $t = \dfrac{c}{d}$
 
-It is highly anticipated that the solutions to the sums of three cubes problem for 114 are astronomically large in size, way beyond the capacity of modern day computing. Given that it is (obviously) unknown, values of $n,x$ for which the aforementioned fraction is an integer and by extension solves this sums of three cubes problem for integers, 
-we search for large congruences of $n,x$ for which  $\frac{36n^3 - 19}{x} \in \mathbb{Z}$ with either of these scenarios playing out per chunk: 
-
-
+| Chunk | (Corresponding) conditions required for $y$ to be integer |
+| 1 | The denominators of s and t must be such that $b | 96738035419242708243$ and $d | 64492023612828472162$. |
+| 2 | The denominators of s and t must be such that $b | 6977706414977556976656852631866224627619$ and $d | 4651804276651704651104568421244149751746$.|
+| 3 |---|
+| 4 |---|
+| 5 |---|
 
 
 **OLD README**
