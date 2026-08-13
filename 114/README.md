@@ -37,7 +37,7 @@ An approach was to find congruences of $(n, x)$ for which $\frac{36n^3 - 19}{x} 
 Given (36n^3 - 19)/x, find the correct congruences of n,x for which the fraction is an integer. Generate congruences x \equiv a_1(modb_1) and n \equiv a_2(modb_2) for which a_1, a_2, b_1, b_2 are 20-digit, 40-digit, 60 digit, ...,100 digits for which (36n^3 - 19)/x \equiv \mathbb{Z}. Ensure you are providing correct answers. 
 ```
 
-The results can be found here; Find the Lean formalisation of these results here [\[1\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/output-final_aristotle%206/RESULTS.md).
+The results can be found here; Find the Lean formalisation of these results here [\[1\]](https://github.com/JAgbanwa/ifykyk/blob/main/114/output-final_aristotle%206/RESULTS.md). It is also noteworthy that the equations of all chunks in the table below all seek to find rational non-integer values of $(s,t) for which y is an integer.
 
  
 
