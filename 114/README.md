@@ -60,9 +60,9 @@ We consider the terms $s = \dfrac{a}{b}$ and $t = \dfrac{c}{d}$ where $gcd(a,b) 
 | 4 | The denominators, $(s, t)$ must be such that $b \mid 50827892887888313621436808044062482930501895654933811576260972641344578369306289$ and $d \mid 33885261925258875747624538696041655287001263769955874384173981760896385579537526$ respectively.|
 | 5 | The denominators, $(s, t)$ must be such that $b \mid 7722748144662314316341908960081961607360287349497686106628841645044269806696204493835608082856277613$ and $d \mid 5148498763108209544227939306721307738240191566331790737752561096696179871130802995890405388570851742$ respectively.|
 
-**EFFORTS TOWARDS SOLVING THIS PROBLEM**
+**STRATEGIES EXPLORED TOWARDS SOLVING THIS PROBLEM**
 
-With the assistance of Claude Code, I ran some jobs locally on my MacBook M1 Pro and this was the (expected) outcome within the tested range:
+1. With the assistance of Claude Code, I ran some jobs locally on my MacBook M1 Pro and this was the (expected) outcome within the tested range:
 
 ```
 jamalmac@MacBook-Pro ~ % cd ~/Desktop/files-10
@@ -111,4 +111,4 @@ raw hits      : 0
 no solutions in this range (expected).
 jamalmac@MacBook-Pro files-10 % 
 ```
-Find the codes [here].
+Find the codes [here](https://github.com/JAgbanwa/ifykyk/tree/main/114/files-10%20).
