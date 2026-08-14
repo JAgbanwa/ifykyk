@@ -60,4 +60,55 @@ We consider the terms $s = \dfrac{a}{b}$ and $t = \dfrac{c}{d}$ where $gcd(a,b) 
 | 4 | The denominators, $(s, t)$ must be such that $b \mid 50827892887888313621436808044062482930501895654933811576260972641344578369306289$ and $d \mid 33885261925258875747624538696041655287001263769955874384173981760896385579537526$ respectively.|
 | 5 | The denominators, $(s, t)$ must be such that $b \mid 7722748144662314316341908960081961607360287349497686106628841645044269806696204493835608082856277613$ and $d \mid 5148498763108209544227939306721307738240191566331790737752561096696179871130802995890405388570851742$ respectively.|
 
+**EFFORTS TOWARDS SOLVING THIS PROBLEM**
 
+With the assistance of Claude Code, I ran some jobs locally on my MacBook M1 Pro and this was the (expected) outcome within the tested range:
+
+```
+jamalmac@MacBook-Pro ~ % cd ~/Desktop/files-10
+jamalmac@MacBook-Pro files-10 % ls
+README.md	make_wu.py	run_mac.sh	st_cubes.py
+degenerate.py	reduction.py	search_cubes.c
+jamalmac@MacBook-Pro files-10 % xattr -dr com.apple.quarantine .
+jamalmac@MacBook-Pro files-10 % chmod +x run_mac.sh
+jamalmac@MacBook-Pro files-10 % bash run_mac.sh selftest
+building...
+built ./search_cubes
+--- reduction ---
+
+==========================================================================
+NUMERIC SPOT CHECKS
+==========================================================================
+  [OK ] 200 random (s,t,y) satisfy both identities exactly
+--- dictionary ---
+  [OK ] forward map residual identity (300 samples)
+  [OK ] inverse map + round trip (300 samples)
+  note: no (x,y,z) with x^3+y^3+z^3=114 is known, so the end-to-end
+        path can only be exercised on synthetic triples until one is found.
+--- degenerate families ---
+    -> 0 solution(s)
+    114 is a perfect cube: False  -> no solutions
+    brute force |y| <= 2000000: no solutions
+--- searcher must rediscover two known solutions ---
+SOLUTION k=39 x=134476 y=-159380 z=117367 d=24904
+done k=39 d=[1,30000] zmax=200000 cands=275686 exact=75 found=1
+SOLUTION k=30 x=2220422932 y=-2218888517 z=-283059965 d=1534415
+done k=30 d=[1,2000000] zmax=300000000 cands=94925447 exact=29564 found=1
+if you saw a SOLUTION line for k=39 and k=30, everything works.
+jamalmac@MacBook-Pro files-10 % bash run_mac.sh bench
+single-core throughput, k=114, ratio zmax/dmax = 54:
+  dmax=1000000  2s  -> 2.00 us per unit of dmax
+  dmax=4000000  7s  -> 1.75 us per unit of dmax
+
+multiply by (seconds you are willing to spend * JOBS) to get the dmax you can reach.
+jamalmac@MacBook-Pro files-10 % caffeinate -i bash run_mac.sh run 114 1e10 5.4e11 6
+k=114 dmax=1e10 zmax=5.4e11 jobs=6 units=384
+# k=114 zmax=5.4e+11 units=384 (geometric split; relative cost per unit is ~constant)
+wall clock: 5357s
+units planned : 384
+units missing : 0
+raw hits      : 0
+no solutions in this range (expected).
+jamalmac@MacBook-Pro files-10 % 
+```
+Find the codes [here].
