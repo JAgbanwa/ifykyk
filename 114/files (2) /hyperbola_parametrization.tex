@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\title{Rational Parametrization of the Hyperbola $X^2 - Y^2 = 1$}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Setup}
+
+We seek all pairs $(X,Y) \in \mathbb{Q}^2$ satisfying
+\begin{equation}
+X^2 - Y^2 = 1.
+\label{eq:main}
+\end{equation}
+
+The key observation is that the left-hand side factors as a difference of squares:
+\begin{equation}
+(X - Y)(X + Y) = 1.
+\label{eq:factored}
+\end{equation}
+
+\section{Parametrization}
+
+For any $t \in \mathbb{Q} \setminus \{0\}$, set
+\begin{equation}
+X + Y = t, \qquad X - Y = \frac{1}{t}.
+\label{eq:sumdiff}
+\end{equation}
+
+This choice automatically satisfies \eqref{eq:factored}, since $(X-Y)(X+Y) = \frac{1}{t} \cdot t = 1$.
+
+Solving the linear system \eqref{eq:sumdiff} for $X$ and $Y$ by adding and subtracting the two equations gives the parametrization:
+
+\begin{equation}
+\boxed{\,X(t) = \frac{1}{2}\left(t + \frac{1}{t}\right), \qquad Y(t) = \frac{1}{2}\left(t - \frac{1}{t}\right), \qquad t \in \mathbb{Q}\setminus\{0\}.\,}
+\label{eq:param}
+\end{equation}
+
+\section{Completeness of the Parametrization}
+
+\begin{proposition}
+The map $t \mapsto (X(t), Y(t))$ defined in \eqref{eq:param} is a bijection between $\mathbb{Q}\setminus\{0\}$ and the set of rational points on the curve \eqref{eq:main}.
+\end{proposition}
+
+\begin{proof}
+\emph{Every $t$ gives a solution.} Direct substitution into \eqref{eq:main} using \eqref{eq:param} confirms
+\[
+X(t)^2 - Y(t)^2 = (X(t)-Y(t))(X(t)+Y(t)) = \frac{1}{t}\cdot t = 1.
+\]
+
+\emph{Every solution arises this way.} Let $(X,Y) \in \mathbb{Q}^2$ satisfy \eqref{eq:main}. First note $X + Y \neq 0$: if $X+Y = 0$ then by \eqref{eq:factored} we would need $(X-Y)\cdot 0 = 1$, which is impossible. Hence we may set
+\[
+t := X + Y \in \mathbb{Q}\setminus\{0\}.
+\]
+From \eqref{eq:factored}, $X - Y = 1/t$. Solving this system for $X$ and $Y$ recovers exactly \eqref{eq:param}. Thus every rational solution corresponds to a unique nonzero rational $t$, namely $t = X+Y$.
+\end{proof}
+
+\section{Integer Form}
+
+Writing $t = p/q$ in lowest terms, with $p, q$ nonzero integers and $\gcd(p,q) = 1$, the parametrization \eqref{eq:param} becomes
+
+\begin{equation}
+X = \frac{p^2 + q^2}{2pq}, \qquad Y = \frac{p^2 - q^2}{2pq}.
+\end{equation}
+
+\section{Geometric Interpretation}
+
+This is the standard rational parametrization of a conic through a known rational point --- here $(X,Y) = (1,0)$. A line of slope determined by $t$ through this point meets the hyperbola in exactly one other rational point, and as $t$ ranges over $\mathbb{Q}\setminus\{0\}$ this sweeps out every rational point on the curve. The construction is directly analogous to the classical parametrization
+\[
+\left(\frac{1-t^2}{1+t^2}, \; \frac{2t}{1+t^2}\right)
+\]
+of the unit circle $X^2 + Y^2 = 1$; here the same idea is adapted to the hyperbola's factorization \eqref{eq:factored} rather than to the sum of squares.
+
+\section{Verification}
+
+Take $t = 2$:
+\[
+X = \frac{1}{2}\left(2 + \frac{1}{2}\right) = \frac{5}{4}, \qquad Y = \frac{1}{2}\left(2 - \frac{1}{2}\right) = \frac{3}{4}.
+\]
+Indeed,
+\[
+\left(\frac{5}{4}\right)^2 - \left(\frac{3}{4}\right)^2 = \frac{25}{16} - \frac{9}{16} = \frac{16}{16} = 1. \qquad \checkmark
+\]
+
+\end{document}
