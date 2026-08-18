@@ -1,0 +1,152 @@
+# SageMath code - Focused search on the actual divisor structure
+from sage.parallel.decorate import parallel
+from multiprocessing import cpu_count
+import time
+
+# Constants
+A = 3185268667669143471416768059029076281260064403298624835146634
+B = 353918740852127052379640895447675142362229378144291648349626
+C = 1519831401667421687829458991789157445364256221653691853090595
+
+D = 5386255598429912910239991074883103648061323608347515713067104506907275944285878462789841452986266125005845596825628779494465555970916820770687828281560445713580845857529504520594684
+E = 6812347168386504364564397888712133441306659545486542739467076752649122734543687696820388736586306024705642039157739295712828518798880977420816988175841637415790459974110929417082796
+F = 2872005922887105612204712888576895642803577224840059660525955764481773178812678494861246411912387442454262975294561586568820236883258414904154274451272523530538639364401666520125108
+G = 403601373467692408273995159382149494499487848483215368650586145686569090715672337841415767442159797280078496814999716951880794271356612614897783688494744701337220471456567329598609
+H = 176959370426063526189820447723837571181114689072145824174813
+
+# The large prime factor
+N = 176959370426063526189820447723837571181114689072145824174813
+
+# Denominator possibilities (non-integer only)
+b_options = [3, N, 3*N]
+d_options = [2, N, 2*N]
+
+print("b options:", [str(b)[:20] + "..." if b > 10^10 else str(b) for b in b_options])
+print("d options:", [str(d)[:20] + "..." if d > 10^10 else str(d) for d in d_options])
+
+# We'll search numerators up to these limits
+# Since denominators are huge, we need to search intelligently
+# Let's use modular arithmetic to find possible numerator patterns
+
+def find_candidate_numerators(denom, max_num=10000):
+    """Find numerators coprime to denom up to max_num"""
+    candidates = []
+    for a in range(1, max_num + 1):
+        if gcd(a, denom) == 1:
+            candidates.append(a)
+    return candidates
+
+# For small denominators, we can enumerate all numerators
+# For huge denominators (N, 3N, 2N), we need to search strategically
+
+def search_single_case(b, d, max_a=1000, max_c=1000):
+    """Search a single (b,d) pair with given numerator bounds"""
+    solutions = []
+    
+    # For small b,d, we can check all numerators
+    if b < 10^6 and d < 10^6:
+        a_range = range(1, b)
+        c_range = range(1, d)
+    else:
+        # For huge denominators, we need to search in specific ranges
+        # We'll try small numerators first (since they might yield solutions)
+        a_range = range(1, min(max_a + 1, b))
+        c_range = range(1, min(max_c + 1, d))
+    
+    for a in a_range:
+        if gcd(a, b) != 1:
+            continue
+        s = a / b
+        
+        # Quick modular check for this s with all c
+        for c in c_range:
+            if gcd(c, d) != 1:
+                continue
+            t = c / d
+            
+            try:
+                # Compute the value
+                val = (A*s + B*t + C)^2 + (D*s^3 + E*s^2 + F*s + G) / (B*t + H)
+                
+                # Check if integer and square
+                if val.denominator() == 1 and val > 0:
+                    y = is_square(val)
+                    if y[0] and y[1] != 0:
+                        solutions.append((s, t, y[1]))
+                        print(f"Found: s={s}, t={t}, y={y[1]}")
+            except:
+                continue
+    
+    return solutions
+
+# Prepare work items for parallel processing
+work_items = []
+max_a = 1000  # Start small, increase if needed
+max_c = 1000
+
+for b in b_options:
+    for d in d_options:
+        work_items.append((b, d, max_a, max_c))
+
+print(f"\nSearching {len(work_items)} (b,d) combinations...")
+print(f"With numerators up to {max_a} and {max_c}")
+
+# Parallel execution
+n_cores = cpu_count()
+print(f"Using {n_cores} cores")
+
+@parallel(ncpus=n_cores)
+def parallel_search_case(b, d, max_a, max_c):
+    return search_single_case(b, d, max_a, max_c)
+
+start_time = time.time()
+all_results = []
+
+for result in parallel_search_case(work_items):
+    solutions = result[1]
+    if solutions:
+        all_results.extend(solutions)
+        print(f"Found {len(solutions)} solutions in this chunk")
+
+elapsed = time.time() - start_time
+print(f"\nSearch completed in {elapsed:.2f} seconds")
+print(f"Total solutions found: {len(all_results)}")
+
+for s, t, y in all_results:
+    print(f"s = {s}, t = {t}, y = {y}")
+
+# If no solutions found, try with larger numerator ranges
+if len(all_results) == 0:
+    print("\nTrying larger numerator ranges...")
+    
+    # Try progressively larger ranges
+    for max_a in [10^4, 10^5, 10^6]:
+        for max_c in [10^4, 10^5, 10^6]:
+            print(f"\nTesting with max_a={max_a}, max_c={max_c}")
+            
+            work_items = [(b, d, max_a, max_c) for b in b_options for d in d_options]
+            
+            @parallel(ncpus=n_cores)
+            def parallel_search_large(b, d, max_a, max_c):
+                return search_single_case(b, d, max_a, max_c)
+            
+            all_results = []
+            start_time = time.time()
+            
+            for result in parallel_search_large(work_items):
+                solutions = result[1]
+                if solutions:
+                    all_results.extend(solutions)
+                    print(f"Found {len(solutions)} solutions")
+            
+            elapsed = time.time() - start_time
+            print(f"Search completed in {elapsed:.2f} seconds")
+            print(f"Total solutions found: {len(all_results)}")
+            
+            for s, t, y in all_results:
+                print(f"s = {s}, t = {t}, y = {y}")
+            
+            if all_results:
+                break
+        if all_results:
+            break
