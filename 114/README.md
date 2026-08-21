@@ -132,7 +132,7 @@ Two cases to be considered with regard to ``t`` are:
 
 $$12u + 7 = 2574249381554104772113969653360653869120095783165895368876280548348089935565401497945202694285425871 \cdot t_0 + 2574249381554104772113969653360653869120095783165895368876280548348089935565401497945202694285425871$$
 
-With the assistance of Magma, this is the answer:
+With the assistance of [Magma](https://github.com/JAgbanwa/ifykyk/blob/main/114/Magma%20code(s)%20for%20Chunk%205's%20equation%20/file-1), this is the answer:
 
 ```
 q mod 12 = 11
