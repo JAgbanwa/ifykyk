@@ -1,0 +1,25 @@
+Z := Integers();
+
+q := Z!2574249381554104772113969653360653869120095783165895368876280548348089935565401497945202694285425871;
+
+C := (7 - q) div 2;
+
+printf "C = %o\n", C;
+
+printf "\nAll integer solutions:\n";
+printf "y = n\n";
+printf "x = 6*n + (%o)\n", C;
+printf "where n is any integer.\n";
+
+// Symbolic verification
+P<n> := PolynomialRing(Z);
+
+y := n;
+x := 6*n + C;
+
+lhs := 12*y + 7;
+rhs := 2*x + q;
+
+printf "\nLHS - RHS = %o\n", lhs - rhs;
+
+assert lhs eq rhs;
