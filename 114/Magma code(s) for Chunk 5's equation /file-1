@@ -1,0 +1,28 @@
+Z := Integers();
+
+q := Z!2574249381554104772113969653360653869120095783165895368876280548348089935565401497945202694285425871;
+
+printf "q mod 12 = %o\n", q mod 12;
+
+C := (5*q - 7) div 12;
+
+printf "C = (5*q - 7)/12 = %o\n", C;
+
+printf "\nAll integer solutions are:\n";
+printf "x = 12*n + 4\n";
+printf "y = %o*n + %o\n", q, C;
+printf "where n is any integer.\n";
+
+// Verify symbolically in Z[n]
+P<n> := PolynomialRing(Z);
+
+x := 12*n + 4;
+y := q*n + C;
+
+lhs := 12*y + 7;
+rhs := q*x + q;
+
+printf "\nVerification:\n";
+printf "LHS - RHS = %o\n", lhs - rhs;
+
+assert lhs eq rhs;
