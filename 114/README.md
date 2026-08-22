@@ -114,7 +114,7 @@ jamalmac@MacBook-Pro files-10 %
 ```
 Find the codes [here](https://github.com/JAgbanwa/ifykyk/tree/main/114/files-10%20).
 
-**CHUNK 5**
+### CHUNK 5
 
 From [Aristotle], for the equation 
 
