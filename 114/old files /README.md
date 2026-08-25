@@ -1,0 +1,1 @@
+[This folder](https://github.com/JAgbanwa/ifykyk/blob/main/114/old%20files%20/section%207%20(.tex)) contains the now removed Section 7 of this [preprint](https://figshare.com/articles/preprint/Closed_form_formulas_on_the_sums_of_three_cubes_for_k_114_192_/30509981?file=61812286). 
