@@ -209,4 +209,8 @@ Computationally searching for rational points on Magma returned no solutions \ci
 
 Aside from $\alpha =  19$, which yielded the point $\left(n, Y\right)$ which generates rational points for equation \eqref{5.99}, we employed the computational assistance of SageMath to search for values of $\alpha$ for which equation \eqref{5.909} has rank $0$ or $ \geq 1$ for the first $50$ values of $\alpha$ \cite{agbanwa_sagemath_rank_2026}. The values of $\alpha$ which have a rank $\geq 1$ observably follow no predictable pattern and hence, the difficulty in generating a recursive pattern for $(n, Y)$ for arbitrary values of $\alpha$.
 
+****************************************************
 
+\begin{exob}
+For fixed $k$, there exists a computational horizon $N(k)$ such that for $|n| > N(k)$, the density of detectable integer solutions in the $(n, \alpha)$-parameter space decays super-polynomially. Experimental evidence suggests $N(k) \approx 10^{103}$ for the cases studied.
+\end{exob}
