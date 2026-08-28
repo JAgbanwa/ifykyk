@@ -214,3 +214,108 @@ Aside from $\alpha =  19$, which yielded the point $\left(n, Y\right)$ which gen
 \begin{exob}
 For fixed $k$, there exists a computational horizon $N(k)$ such that for $|n| > N(k)$, the density of detectable integer solutions in the $(n, \alpha)$-parameter space decays super-polynomially. Experimental evidence suggests $N(k) \approx 10^{103}$ for the cases studied.
 \end{exob}
+
+****************************************************
+
+\subsection{\texorpdfstring{$k = 114$}{k = 114}}
+
+The equation
+\begin{equation} \label{3.9}
+    m = \dfrac{r^3 - 114}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n, 36n^3 - 19\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.2}
+    Y^2 = (6n + \alpha)^2 + \frac{36n^3 - 19}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(0\pmod{3}, 7\pmod{12}, 0\pmod{6} \right)$
+
+
+\subsection{\texorpdfstring{$k = 390$}{k = 390}}
+
+
+The equation
+\begin{equation} \label{4.01}
+    m = \dfrac{r^3 - 390}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n, 36n^3 - 65\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.3}
+    Y^2 = (6n + \alpha)^2 + \frac{36n^3 - 65}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(1\pmod{3}, 5\pmod{12}, 0\pmod{6} \right)$
+
+
+\subsection{\texorpdfstring{$k = 627$}{k = 627}}
+
+The equation
+\begin{equation} \label{4.02}
+    m = \dfrac{r^3 - 627}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n + 3, 36n^3 + 54n^2 + 27n - 100\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.4}
+    Y^2 = (6n + 3 + \alpha)^2 + \frac{36n^3 + 54n^2 + 27n - 100}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(1\pmod{3}, 1\pmod{3}, 0\pmod{3} \right)$
+
+
+\subsection{\texorpdfstring{$k = 633$}{k = 633}}
+
+The equation
+\begin{equation} \label{4.03}
+    m = \dfrac{r^3 - 633}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n + 3, 36n^3 + 54n^2 + 27n - 101\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.5}
+    Y^2 = (6n + 3 + \alpha)^2 + \frac{36n^3 + 54n^2 + 27n - 101}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(2\pmod{3}, 2\pmod{3}, 0\pmod{3} \right)$
+
+\subsection{\texorpdfstring{$k = 732$}{k = 732}}
+
+The equation
+\begin{equation} \label{4.04}
+    m = \dfrac{r^3 - 732}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n, 36n^3 - 122\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.6}
+    Y^2 = (6n + \alpha)^2 + \frac{36n^3 - 122}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(2\pmod{3}, 2\pmod{12}, 3\pmod{6} \right)$
+
+
+\subsection{\texorpdfstring{$k = 921$}{k = 921}}
+
+The equation
+\begin{equation} \label{4.05}
+    m = \dfrac{r^3 - 921}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n + 3, 36n^3 + 54n^2 + 27n - 149\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.7}
+    Y^2 = (6n + 3 + \alpha)^2 + \frac{36n^3 + 54n^2 + 27n - 149}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(0\pmod{3}, 2\pmod{3}, 0\pmod{3} \right)$
+
+\subsection{\texorpdfstring{$k = 975$}{k = 975}}
+
+The equation
+\begin{equation} \label{4.06}
+    m = \dfrac{r^3 - 975}{6}
+\end{equation}
+has as solutions: $\left(r,m\right) = \left(6n + 3, 36n^3 + 54n^2 + 27n - 158\right)$.
+
+The modular conditions for $(n, \alpha)$ required for $y$ to be integer in the equation
+\begin{equation} \label{4.8}
+    Y^2 = (6n + 3 + \alpha)^2 + \frac{36n^3 + 54n^2 + 27n - 158}{\alpha}
+\end{equation}
+are $\left(n, \alpha, Y\right) = \left(0\pmod{3}, 2\pmod{3}, 0\pmod{3} \right)$
